@@ -31,6 +31,14 @@ public class StatementService {
     PDFGenerator pdfGenerator;
 
 
+    /**
+     *
+     * @param parentCustomerName
+     * @param childCustomerIds
+     * @param dateAfterStr  yyyy-mm-dd
+     * @param dateBeforeStr  yyyy-mm-dd
+     * @return
+     */
     public Statement createStatement(String parentCustomerName, List<String> childCustomerIds,
                                      String dateAfterStr, String dateBeforeStr
     ){

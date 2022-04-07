@@ -4,12 +4,11 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Object returned when a list of invoices is looked up
+ */
 public class InvoiceFetch {
 
-    // import com.fasterxml.jackson.databind.ObjectMapper; // version 2.11.1
-// import com.fasterxml.jackson.annotation.JsonProperty; // version 2.11.1
-/* ObjectMapper om = new ObjectMapper();
-Root root = om.readValue(myJsonString), Root.class); */
 
     public String invoice_id;
     public boolean ach_payment_initiated;

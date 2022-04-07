@@ -7,6 +7,7 @@ import org.apache.commons.collections4.ListUtils;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.logging.Logger;
+import outcastfoods.integration.zoho.exception.DataException;
 import outcastfoods.integration.zoho.mapping.StoreInfoMapping;
 import outcastfoods.integration.zoho.model.internal.InvoiceInfo;
 import outcastfoods.integration.zoho.utils.DateUtils;
@@ -211,7 +212,7 @@ public class InvoiceService {
         return allRegionOrders;
     }
 
-    public String createInvoice( String invoiceDate, String referenceNumber ){
+    public String createInvoice( String invoiceDate, String referenceNumber ) throws DataException {
 
         InvoiceCreate invoice = new InvoiceCreate();
         invoice.setCustomer_id(PICK_N_PAY_CUSTOMER_ID);
@@ -240,14 +241,14 @@ public class InvoiceService {
 
         } catch (Throwable t){
             LOG.error("Can't create invoice:", t);
-
+            throw new DataException("Can't create invoice",t);
         }
 
         return null;
     }
 
 
-    public List<InvoiceFetch> getInvoices(String customerId, String dateAfter, String dateBefore ){
+    public List<InvoiceFetch> getInvoices(String customerId, String dateAfter, String dateBefore ) throws DataException{
 
         List<InvoiceFetch> invoiceFetches = new ArrayList<>();
 
@@ -261,17 +262,34 @@ public class InvoiceService {
                 invoiceFetches.add(invoiceFetch);
             }
 
-            String lalala = "sdsds";
 
         } catch (Throwable t){
             LOG.error("Can't get invoices:", t);
-
+            throw new DataException("Can't get invoices",t);
         }
 
         return invoiceFetches;
     }
 
-    public List<Payment> getPayments(String customerName, String dateAfter, String dateBefore ){
+    public InvoiceDetail getInvoice(String id ) throws DataException {
+
+        try{
+            HashMap response = (HashMap) zohoApiClient.getInvoice(authService.getAccessToken().getBearerToken(), id);
+            Map invoicesMap = (Map)response.get("invoice");
+
+            ObjectMapper mapper = new ObjectMapper(); // jackson's objectmapper
+            InvoiceDetail invoiceDetail = mapper.convertValue(invoicesMap, InvoiceDetail.class);
+
+            return invoiceDetail;
+        } catch (Throwable t){
+            LOG.error("Can't get invoice:", t);
+            throw new DataException("Can't get invoice",t);
+        }
+
+
+    }
+
+    public List<Payment> getPayments(String customerName, String dateAfter, String dateBefore ) throws DataException{
 
         List<Payment> payments = new ArrayList<>();
         try{
@@ -289,7 +307,7 @@ public class InvoiceService {
 
         } catch (Throwable t){
             LOG.error("Can't get customer:", t);
-
+            throw new DataException("Can't get customer",t);
         }
 
         return payments;
@@ -298,7 +316,7 @@ public class InvoiceService {
 
 
 
-    public  List<CreditNote> getCreditNotes(String customerId, String dateAfter, String dateBefore){
+    public  List<CreditNote> getCreditNotes(String customerId, String dateAfter, String dateBefore) throws DataException{
 
         List<CreditNote> creditNotes = new ArrayList<>();
 
@@ -319,7 +337,7 @@ public class InvoiceService {
 
         } catch (Throwable t){
             LOG.error("Can't get credit notes:", t);
-
+            throw new DataException("Can't get credit notes:",t);
         }
 
         return creditNotes;

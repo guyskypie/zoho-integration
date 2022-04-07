@@ -30,7 +30,14 @@ public class StatementResource {
     TabDelimitedPnPStatementService tabDelimitedPnPStatementService;
 
 
-
+    /**
+     *
+     * @param dateFromIn  yyyy-mm-dd
+     * @param dateToIn yyyy-mm-dd
+     * @param clientIds
+     * @param parentCustomerName
+     * @return
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Object getStatement(@QueryParam("dateFrom") String dateFromIn, @QueryParam("dateTo") String dateToIn,

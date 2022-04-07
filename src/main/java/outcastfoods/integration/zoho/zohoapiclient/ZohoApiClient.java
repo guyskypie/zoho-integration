@@ -24,6 +24,13 @@ public interface ZohoApiClient {
                                      @QueryParam("date_after") String dateAfter,
                                      @QueryParam("date_before") String dateBefore);
 
+    //https://invoice.zoho.com/api/v3/invoices?customer_id=REDACTED_ID&date_after=2021-08-01&date_before=2021-08-31
+    @GET
+    @Path("/invoices/{invoiceId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Object getInvoice(@HeaderParam("Authorization") String bearerToken,
+                              @PathParam("invoiceId") String invoiceId);
+
     @GET
     @Path("/invoices")
     @Produces(MediaType.APPLICATION_JSON)

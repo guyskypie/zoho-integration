@@ -29,7 +29,7 @@ public class InvoiceResource {
 
 
     @GET
-    @Path("/create/picknpay")
+    @Path("/generatefromorderfile/picknpay")
     @Produces(MediaType.APPLICATION_JSON)
     public Object createPicknPayInvoice() throws IOException, InterruptedException {
 
