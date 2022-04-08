@@ -581,16 +581,25 @@ Root root = om.readValue(myJsonString, Root.class); */
     public class Tax{
         public String tax_name;
         public double tax_amount;
+
+        public Tax() {
+        }
     }
 
     public class PaymentGateway{
         public boolean configured;
         public String additional_field1;
         public String gateway_name;
+
+        public PaymentGateway() {
+        }
     }
 
     public class PaymentOptions{
         public ArrayList<PaymentGateway> payment_gateways;
+
+        public PaymentOptions() {
+        }
     }
 
 
