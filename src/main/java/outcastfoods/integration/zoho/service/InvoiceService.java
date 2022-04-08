@@ -278,6 +278,7 @@ public class InvoiceService {
             Map invoicesMap = (Map)response.get("invoice");
 
             ObjectMapper mapper = new ObjectMapper(); // jackson's objectmapper
+            mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             InvoiceDetail invoiceDetail = mapper.convertValue(invoicesMap, InvoiceDetail.class);
 
             return invoiceDetail;

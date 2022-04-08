@@ -8,9 +8,8 @@ import org.jboss.logging.Logger;
 import outcastfoods.integration.zoho.mapping.ProductMapping;
 import outcastfoods.integration.zoho.model.externalapi.InvoiceDetail;
 import outcastfoods.integration.zoho.model.externalapi.InvoiceFetch;
-import outcastfoods.integration.zoho.model.internal.PicknPayTransactionType;
+import outcastfoods.integration.zoho.model.externalapi.InvoiceLineItem;
 import outcastfoods.integration.zoho.model.internal.PnpCsvLine;
-import outcastfoods.integration.zoho.model.internal.TabDelimitedLine;
 import outcastfoods.integration.zoho.zohoapiclient.ZohoApiClient;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -38,19 +37,19 @@ public class PnpCsvEdiInvoiceService {
     @Inject
     InvoiceService invoiceService;
 
-    @ConfigProperty(name = "output.statement.dir")
-    String statementOutPutDir;
+    @ConfigProperty(name = "output.invoice.dir")
+    String invoiceOutPutDir;
 
     static final String FILE_NAME_TEMPLATE = "pnp1000011382_[DATE]_outcastfoods_invoices.csv";
 
-    public Object createStatement(String customerId, String dateAfter, String dateBefore) {
+    public Object createCsvInvoiceFile(String customerId, String dateAfter, String dateBefore) {
 
 
         SimpleDateFormat invoiceFileNameDateFormat = new SimpleDateFormat(
                 "yyyyMMdd");
         String fileNameDate = invoiceFileNameDateFormat.format(new Date());
 
-        String fullPathStatementFileName = statementOutPutDir + FILE_NAME_TEMPLATE.replace("[DATE]", fileNameDate);
+        String fullPathStatementFileName = invoiceOutPutDir + FILE_NAME_TEMPLATE.replace("[DATE]", fileNameDate);
 
         SimpleDateFormat pnpInvoiceDateFormat = new SimpleDateFormat(
                 "dd/MM/yyyy");
@@ -59,14 +58,14 @@ public class PnpCsvEdiInvoiceService {
                 "yyyy-MM-dd");
 
         try {
-            List<TabDelimitedLine> csvLines = new ArrayList<>();
+            List<PnpCsvLine> csvLines = new ArrayList<>();
 
             List<InvoiceFetch> invoiceFetches = getInvoices(customerId, dateAfter, dateBefore);
             for (InvoiceFetch invoiceFetch : invoiceFetches) {
 
                 InvoiceDetail invoice = invoiceService.getInvoice(invoiceFetch.getInvoice_id());
-                ArrayList<InvoiceDetail.LineItem> line_items = invoice.getLine_items();
-                for (InvoiceDetail.LineItem line_item : line_items) {
+                ArrayList<InvoiceLineItem> line_items = invoice.getLine_items();
+                for (InvoiceLineItem line_item : line_items) {
 
                     PnpCsvLine pnpCsvLine = new PnpCsvLine();
                     pnpCsvLine.setInvoiceNumber(invoice.getInvoice_number());
@@ -99,46 +98,43 @@ public class PnpCsvEdiInvoiceService {
                     BigDecimal linePriceInclVat = linePriceExVat.multiply(taxPercentage);
                     linePriceInclVat = linePriceInclVat.setScale(2, RoundingMode.HALF_UP);
 
-
                     pnpCsvLine.setTaxPercentage(taxPercentage.toString());
                     pnpCsvLine.setPriceExVat(linePriceExVat.toString());
                     pnpCsvLine.setPriceInclVat(linePriceInclVat.toString());
+
+                    csvLines.add(pnpCsvLine);
                 }
 
-                SimpleDateFormat invFormat = new SimpleDateFormat(
-                        "yyyy-MM-dd");
-                Date invoiceDate = invFormat.parse(invoiceFetch.getDate());
-                SimpleDateFormat tabDocLineFormat = new SimpleDateFormat(
-                        "yyyy.MM.dd");
-                String tabDelimDate = tabDocLineFormat.format(invoiceDate);
-
-                TabDelimitedLine tabDelimitedLine = new TabDelimitedLine();
-                tabDelimitedLine.setDate(tabDelimDate);
-                tabDelimitedLine.setTransactionType(PicknPayTransactionType.INV);
-                tabDelimitedLine.setAmount(invoiceFetch.getTotal() + "");
-                tabDelimitedLine.setReference1(invoiceFetch.getInvoice_number());
-                tabDelimitedLine.setReference2(invoiceFetch.getReference_number());
-
-                csvLines.add(tabDelimitedLine);
             }
 
             try (PrintWriter writer = new PrintWriter(
                     Files.newBufferedWriter(Paths.get(fullPathStatementFileName)))) {
 
-                for (TabDelimitedLine tabDelimitedLine : csvLines) {
+                for (PnpCsvLine pnpCsvLine : csvLines) {
 
-                    writer.print(tabDelimitedLine.getDate()+"\t");
-                    writer.print(tabDelimitedLine.getTransactionType().toString()+"\t");
-                    writer.print(tabDelimitedLine.getAmount()+"\t");
-                    writer.print(tabDelimitedLine.getReference1()+"\t");
-                    writer.print(tabDelimitedLine.getReference2()+"\t");
+                    writer.print(pnpCsvLine.getInvoiceNumber()+",");
+                    writer.print(pnpCsvLine.getDate()+",");
+                    writer.print(pnpCsvLine.getDueDate()+",");
+                    writer.print(pnpCsvLine.getPoNumber()+",");
+                    writer.print("ZAR,");
+                    writer.print(pnpCsvLine.getInvoiceTotal() + ",");
+                    writer.print(pnpCsvLine.getBarcode() + ",");
+                    writer.print(pnpCsvLine.getVendorProductCode() + ",");
+                    writer.print(pnpCsvLine.getArticleDescription() + ",");
+                    writer.print(pnpCsvLine.getQuantity() + ",");
+                    writer.print("CS,");
+                    writer.print("STANDARD_RATE,");
+                    writer.print(pnpCsvLine.getTaxPercentage() + ",");
+                    writer.print(pnpCsvLine.getPriceExVat() + ",");
+                    writer.print(pnpCsvLine.getPriceInclVat());
+
                     writer.println();
                 }
             }
 
 
         } catch (Throwable t) {
-            LOG.error("Can't create pick n pay statement:", t);
+            LOG.error("Can't create pick n pay order invoices:", t);
             t.printStackTrace();
         }
 
