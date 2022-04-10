@@ -71,8 +71,9 @@ public class PnpCsvEdiInvoiceService {
                     pnpCsvLine.setInvoiceNumber(invoice.getInvoice_number());
 
                     Date invoiceDate = zohoDateFormat.parse(invoice.getDate());
+                    Date dueDate = zohoDateFormat.parse(dateBefore);
                     String pnpInvoiceDate = pnpInvoiceDateFormat.format(invoiceDate);
-                    String pnpDueDate = pnpInvoiceDateFormat.format(dateBefore);
+                    String pnpDueDate = pnpInvoiceDateFormat.format(dueDate);
 
                     pnpCsvLine.setDate(pnpInvoiceDate);
                     pnpCsvLine.setDueDate(pnpDueDate);
@@ -95,7 +96,7 @@ public class PnpCsvEdiInvoiceService {
                     BigDecimal linePriceExVat = line_item.getItem_total();
                     linePriceExVat = linePriceExVat.setScale(2, RoundingMode.HALF_UP);
 
-                    BigDecimal linePriceInclVat = linePriceExVat.multiply(taxPercentage);
+                    BigDecimal linePriceInclVat = linePriceExVat.multiply((taxPercentage.divide(BigDecimal.valueOf(100),2,RoundingMode.HALF_UP)).add(BigDecimal.ONE));
                     linePriceInclVat = linePriceInclVat.setScale(2, RoundingMode.HALF_UP);
 
                     pnpCsvLine.setTaxPercentage(taxPercentage.toString());
