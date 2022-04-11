@@ -1,10 +1,18 @@
 {
 	"info": {
 		"_postman_id": "e19b04bd-7f61-46f5-a23c-b9c3d0f5c22b",
-		"name": "Zoho",
+		"name": "Zoho Guy App",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "GetCreditNotes",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
 		{
 			"name": "Get Invoice",
 			"request": {
@@ -211,7 +219,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8083/statement?dateFrom=2022-01-01&dateTo=2022-01-31&customerIdsCsv=REDACTED_ID,REDACTED_ID&parentCustomerName=REDACTED_CUSTOMER",
+					"raw": "localhost:8083/statement?dateFrom=2022-02-01&dateTo=2022-03-26&customerIdsCsv=REDACTED_ID,REDACTED_ID&parentCustomerName=REDACTED_CUSTOMER",
 					"host": [
 						"localhost"
 					],
@@ -222,11 +230,11 @@
 					"query": [
 						{
 							"key": "dateFrom",
-							"value": "2022-01-01"
+							"value": "2022-02-01"
 						},
 						{
 							"key": "dateTo",
-							"value": "2022-01-31"
+							"value": "2022-03-26"
 						},
 						{
 							"key": "customerIdsCsv",
@@ -298,7 +306,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8083/statement/picknpay?customerId=REDACTED_ID&dateTo=2022-01-31",
+					"raw": "http://localhost:8083/statement/picknpay?customerId=REDACTED_ID&dateTo=2022-04-06",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -315,7 +323,7 @@
 						},
 						{
 							"key": "dateTo",
-							"value": "2022-01-31"
+							"value": "2022-04-06"
 						}
 					]
 				}
@@ -323,12 +331,12 @@
 			"response": []
 		},
 		{
-			"name": "j_createinvoice_picknpay",
+			"name": "j_order_createinvoice_zoho_picknpay",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8083/invoice/create/picknpay",
+					"raw": "http://localhost:8083/invoice/generatefromorderfile/picknpay",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -336,8 +344,43 @@
 					"port": "8083",
 					"path": [
 						"invoice",
-						"create",
+						"generatefromorderfile",
 						"picknpay"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "j_create_csv_invoice_picknpay",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/invoice/generatecsvportal/picknpay?customerId=REDACTED_ID&dateFrom=2022-04-04&dateTo=2022-04-29",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"invoice",
+						"generatecsvportal",
+						"picknpay"
+					],
+					"query": [
+						{
+							"key": "customerId",
+							"value": "REDACTED_ID"
+						},
+						{
+							"key": "dateFrom",
+							"value": "2022-04-04"
+						},
+						{
+							"key": "dateTo",
+							"value": "2022-04-29"
+						}
 					]
 				}
 			},
@@ -347,6 +390,16 @@
 	"auth": {
 		"type": "oauth2",
 		"oauth2": [
+			{
+				"key": "tokenType",
+				"value": "Bearer",
+				"type": "string"
+			},
+			{
+				"key": "accessToken",
+				"value": "REDACTED_ZOHO_ACCESS_TOKEN",
+				"type": "string"
+			},
 			{
 				"key": "tokenName",
 				"value": "postman",
