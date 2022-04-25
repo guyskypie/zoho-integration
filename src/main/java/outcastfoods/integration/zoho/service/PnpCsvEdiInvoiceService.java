@@ -89,6 +89,7 @@ public class PnpCsvEdiInvoiceService {
                     pnpCsvLine.setBarcode(productMapping.getCaseOf6Barcode());
                     pnpCsvLine.setVendorProductCode(line_item.getName());
                     pnpCsvLine.setArticleDescription(productMapping.getArticleDescription());
+                    //int numberOfCases = line_item.getQuantity() / 6;
                     pnpCsvLine.setQuantity(line_item.getQuantity()+"");
 
                     BigDecimal taxPercentage = line_item.getTax_percentage();
