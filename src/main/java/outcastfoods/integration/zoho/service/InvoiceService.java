@@ -97,7 +97,7 @@ public class InvoiceService {
                 if(validStoreCodes.contains(orderLine.getStoreCode().trim())){
                     LineItem lineItem = new LineItem();
                     lineItem.setItem_id(ProductMapping.findItemIdByProductCode(orderLine.getProductCode()));
-                    Integer quantityToOrder = orderLine.getPackSize() * orderLine.getQuantity();
+                    Integer quantityToOrder = /*orderLine.getPackSize() **/ orderLine.getQuantity();
                     lineItem.setQuantity(quantityToOrder.toString());
 
                     lineItems.add(lineItem);
