@@ -70,7 +70,7 @@ public class WriteOrderFileService {
                         List<LineItem> lineItems = order.getLineItems();
                         for (LineItem lineItem : lineItems) {
                             ProductMapping product = ProductMapping.findByItemId(lineItem.getItem_id());
-                            Integer numberOfCases = Integer.valueOf(lineItem.getQuantity()) / 6;
+                            Integer numberOfCases = Integer.valueOf(lineItem.getQuantity());
                             productToQuantity.put(product, numberOfCases.toString());
                         }
                     }

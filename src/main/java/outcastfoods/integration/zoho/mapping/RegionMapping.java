@@ -6,7 +6,7 @@ import java.util.List;
 
 public enum RegionMapping {
 
-    GAUTENG(new String []{"HC","NC","GC","GD","GF","GD","GH","NF","NG","NH"}),
+    GAUTENG(new String []{"HC","NC","GC","GD","GF","GH","NF","NG","NH"}),
     KZN(new String []{"KC","KF"}),
     WC(new String []{"WC","WD","WF"});
 
