@@ -75,4 +75,24 @@ public class DateUtils {
         return datePlusOneDay;
 
     }
+
+
+    /**
+     * @return
+     * @throws ParseException
+     */
+    public static String getTodaysDate() throws ParseException {
+
+        SimpleDateFormat format = new SimpleDateFormat(
+                "yyyy-MM-dd", Locale.US);
+
+        LocalDate localDate = LocalDate.now();
+
+        String datePlusOneDay = format.format(Date.from(localDate.atStartOfDay()
+                .atZone(ZoneId.systemDefault())
+                .toInstant()));
+
+        return datePlusOneDay;
+
+    }
 }

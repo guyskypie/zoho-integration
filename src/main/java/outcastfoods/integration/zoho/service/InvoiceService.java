@@ -147,7 +147,7 @@ public class InvoiceService {
         //now write the order files
         for (Order order : orders) {
             InvoiceCreate invoiceCreate = new InvoiceCreate();
-            invoiceCreate.setInvoiceDate(DateUtils.getDateOneDayAfterCurrentDate());
+            invoiceCreate.setInvoiceDate(DateUtils.getTodaysDate());
             invoiceCreate.setCustomer_id(PICK_N_PAY_CUSTOMER_ID);
             invoiceCreate.setReference_number(order.getPoNumber());
             invoiceCreate.setNotes(order.getStoreCode() + " - " + order.getStoreDescription()
