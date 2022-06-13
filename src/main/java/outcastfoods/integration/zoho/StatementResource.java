@@ -42,14 +42,15 @@ public class StatementResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Object getStatement(@QueryParam("dateFrom") String dateFromIn, @QueryParam("dateTo") String dateToIn,
                                  @QueryParam("customerIdsCsv") String clientIds,
-                                 @QueryParam("parentCustomerName") String parentCustomerName) {
+                                 @QueryParam("parentCustomerName") String parentCustomerName,
+                                 @QueryParam("dateForBalanceDue") String dateForBalanceDue) {
 
         String [] customerIdArr = clientIds.split(",");
         List<String> customerIds = Arrays.asList(customerIdArr);
 
         LocalDate currentDate = LocalDate.now();
 
-        Statement statement = statementService.createStatement(parentCustomerName, customerIds, dateFromIn, dateToIn);
+        Statement statement = statementService.createStatement(parentCustomerName, customerIds, dateFromIn, dateToIn, dateForBalanceDue);
 
         return statement;
     }

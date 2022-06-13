@@ -40,8 +40,7 @@ public class StatementService {
      * @return
      */
     public Statement createStatement(String parentCustomerName, List<String> childCustomerIds,
-                                     String dateAfterStr, String dateBeforeStr
-    ){
+                                     String dateAfterStr, String dateBeforeStr, String dateForBalanceDue){
 
         Statement statement = new Statement();
 
@@ -52,6 +51,9 @@ public class StatementService {
             //total current balance with all payments and credits for a customer with child accounts
             BigDecimal currentBalanceAmountAtEndDate = BigDecimal.ZERO;
 
+            //
+            BigDecimal balanceDueForPreviousMonth = BigDecimal.ZERO;
+
             List<Transaction> allTransactions = new ArrayList<>();
 
             // get overall current balance and total credits and invoices
@@ -60,6 +62,7 @@ public class StatementService {
                 Customer customer = lookupService.getCustomer(childCustomerId);
 
                 currentBalanceAmountAtEndDate = currentBalanceAmountAtEndDate.add(balanceService.getBalanceAtDate(customer, dateBeforeStr));
+                balanceDueForPreviousMonth = balanceDueForPreviousMonth.add(balanceService.getBalanceAtDate(customer, dateForBalanceDue));
 
                 allTransactions.addAll(balanceService.getAllTransactions(customer, dateAfterStr, dateBeforeStr));
 
@@ -110,7 +113,7 @@ public class StatementService {
 
             statement.setContactName(parentCustomerName);
             statement.setOpeningbalance(openingBalance);
-            statement.setBalanceDue(currentBalanceAmountAtEndDate);
+            statement.setBalanceDue(balanceDueForPreviousMonth);
             statement.setStatementLines(statementLines);
             statement.setFromDate(dateAfterStr);
             statement.setToDate(dateBeforeStr);
