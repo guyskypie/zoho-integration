@@ -58,6 +58,18 @@ public class BalanceService {
         return allTransactions;
     }
 
+    public BigDecimal getTotalInvoicedAmountForPeriod(Customer customer,  String dateAfterStr, String dateBefore) throws ParseException, DataException {
+
+        BigDecimal invoicedAmount = BigDecimal.ZERO;
+
+        List<Transaction> invoiceTransactions = getInvoiceTransactions(dateAfterStr, dateBefore, customer);
+        for (Transaction invoiceTransaction : invoiceTransactions) {
+            invoicedAmount = invoicedAmount.add(invoiceTransaction.getAmount());
+        }
+
+        return invoicedAmount;
+    }
+
     public BigDecimal getBalanceAtDate(Customer customer, String balanceDate) throws DataException, ParseException {
 
         String now = dateFormat.format(new Date());
@@ -65,7 +77,7 @@ public class BalanceService {
         BigDecimal outstandingBalanceAmount = customer.getOutstanding_receivable_amount();
         BigDecimal outstandingCredits = customer.getUnused_credits_receivable_amount();
 
-            BigDecimal currentBalanceAmount = outstandingBalanceAmount.subtract( outstandingCredits);
+        BigDecimal currentBalanceAmount = outstandingBalanceAmount.subtract( outstandingCredits);
 
         List<Transaction> allTransactions = getAllTransactions(customer, balanceDate, now);
 
@@ -78,9 +90,10 @@ public class BalanceService {
 
                 if(TransactionType.DR.equals(transaction.getTransactionType())){
                     currentBalanceAmount = currentBalanceAmount.subtract(transaction.getAmount()) ;
-                } else if(TransactionType.CR.equals(transaction.getTransactionType())){
+                } /*else if(TransactionType.CR.equals(transaction.getTransactionType())){
+                    // Don't do this the credits already taken care of as we had the total outstanding balance
                     currentBalanceAmount = currentBalanceAmount.add(transaction.getAmount());
-                }
+                }*/
 
             countTransactionNumber++;
         }

@@ -112,8 +112,8 @@ public class PDFGenerator {
 
             Phrase summaryPhrase = new Phrase();
             //TODO ADD BACK OPENING BALNCE AND BALANCE DUE
-            summaryPhrase.add(new Chunk("Opening Balance:" /*+ statement.getOpeningbalance() */+ "\n"));
-            summaryPhrase.add(new Chunk("Balance Due:" /*+ statement.getBalanceDue() */+ "\n"));
+            summaryPhrase.add(new Chunk("Opening Balance:" + statement.getOpeningbalance() + "\n"));
+            summaryPhrase.add(new Chunk("Balance Due:" + statement.getBalanceDue() + "\n"));
 
             PdfPCell summaryPhraseCell = new PdfPCell();
             summaryPhraseCell.setHorizontalAlignment(Element.ALIGN_LEFT);
@@ -156,7 +156,7 @@ public class PDFGenerator {
             openBalDateCell.setHorizontalAlignment(Element.ALIGN_LEFT);
             openBalanceTextCell.addElement(new Phrase("*** Opening Balance ***"));
             openBalanceTextCell.setHorizontalAlignment(Element.ALIGN_LEFT);
-            openBalanceCell.addElement(new Phrase(/*statement.getOpeningbalance().toString()*/)); //TODO ADD BACK OPENING BALNCE
+            openBalanceCell.addElement(new Phrase(statement.getOpeningbalance().toString())); //TODO ADD BACK OPENING BALNCE
             openBalanceCell.setHorizontalAlignment(Element.ALIGN_LEFT);
 
             transactionsTable.addCell(openBalDateCell);
@@ -197,7 +197,7 @@ public class PDFGenerator {
             PdfPCell balanceDueCell = new PdfPCell();
             balanceDueCell.setHorizontalAlignment(Element.ALIGN_RIGHT);
             //TODO ADD BACK BALANCE DUE
-            balanceDueCell.addElement(new Phrase("Balance Due           R" /*+ statement.getBalanceDue()*/));
+            balanceDueCell.addElement(new Phrase("Balance Due           R" + statement.getBalanceDue()));
             finalBalanceDueTable.addCell(new PdfPCell());
             finalBalanceDueTable.addCell(balanceDueCell);
 

@@ -49,7 +49,7 @@ public class StatementService {
                     "yyyy-MM-dd", Locale.US);
 
             //total current balance with all payments and credits for a customer with child accounts
-            BigDecimal currentBalanceAmountAtEndDate = BigDecimal.ZERO;
+            BigDecimal currentBalanceAmountAtEndDate= BigDecimal.ZERO;
 
             //
             BigDecimal balanceDueForPreviousMonth = BigDecimal.ZERO;
@@ -62,7 +62,8 @@ public class StatementService {
                 Customer customer = lookupService.getCustomer(childCustomerId);
 
                 currentBalanceAmountAtEndDate = currentBalanceAmountAtEndDate.add(balanceService.getBalanceAtDate(customer, dateBeforeStr));
-                balanceDueForPreviousMonth = balanceDueForPreviousMonth.add(balanceService.getBalanceAtDate(customer, dateForBalanceDue));
+                //balanceDueForPreviousMonth = balanceDueForPreviousMonth.add(balanceService.getBalanceAtDate(customer, dateForBalanceDue));
+                balanceDueForPreviousMonth = balanceDueForPreviousMonth.add(balanceService.getTotalInvoicedAmountForPeriod(customer, dateAfterStr, dateForBalanceDue));
 
                 allTransactions.addAll(balanceService.getAllTransactions(customer, dateAfterStr, dateBeforeStr));
 
