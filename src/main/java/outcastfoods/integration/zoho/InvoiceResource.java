@@ -4,9 +4,8 @@ package outcastfoods.integration.zoho;
 import org.acme.rest.client.fruit.FruityViceService;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.logging.Logger;
-import outcastfoods.integration.zoho.service.InvoiceService;
+import outcastfoods.integration.zoho.service.PnpZohoInvoiceService;
 import outcastfoods.integration.zoho.service.PnpCsvEdiInvoiceService;
-import outcastfoods.integration.zoho.service.StatementService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -26,7 +25,7 @@ public class InvoiceResource {
     PnpCsvEdiInvoiceService pnpCsvEdiInvoiceService;
 
     @Inject
-    InvoiceService invoiceService;
+    PnpZohoInvoiceService pnpZohoInvoiceService;
 
 
     @GET
@@ -35,7 +34,7 @@ public class InvoiceResource {
     public Object createPicknPayZohoInvoice() throws IOException, InterruptedException {
 
         try {
-            invoiceService.createInvoicesAndOrderFiles();
+            pnpZohoInvoiceService.createInvoicesAndOrderFiles();
         } catch (Throwable t){
             LOG.error("Why:", t);
             t.printStackTrace();

@@ -15,8 +15,6 @@ import javax.inject.Inject;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.*;
 
 @ApplicationScoped
@@ -26,7 +24,7 @@ public class BalanceService {
     LookupService lookupService;
 
     @Inject
-    InvoiceService invoiceService;
+    PnpZohoInvoiceService pnpZohoInvoiceService;
 
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
 
@@ -105,7 +103,7 @@ public class BalanceService {
     public  List<Transaction>  getInvoiceTransactions(String dateAfter, String dateBefore,  Customer customer) throws DataException {
 
         List<Transaction> invoiceTransactions = new ArrayList<>();
-        List<InvoiceFetch> invoiceFetches = invoiceService.getInvoices(customer.getContact_id(), dateAfter, dateBefore);
+        List<InvoiceFetch> invoiceFetches = pnpZohoInvoiceService.getInvoices(customer.getContact_id(), dateAfter, dateBefore);
         for (InvoiceFetch invoiceFetch : invoiceFetches) {
 
             if(invoiceFetch.getStatus().equals("partially_paid")
@@ -140,7 +138,7 @@ public class BalanceService {
     public  List<Transaction>  getCreditTransactions(String dateAfter, String dateBefore, Customer customer) throws DataException {
 
         List<Transaction> creditTransactions = new ArrayList<>();
-        List<CreditNote> creditNotes = invoiceService.getCreditNotes(customer.getContact_id(), dateAfter, dateBefore);
+        List<CreditNote> creditNotes = pnpZohoInvoiceService.getCreditNotes(customer.getContact_id(), dateAfter, dateBefore);
         for (CreditNote creditNote : creditNotes) {
 
             if(creditNote.getStatus().equals("open") || creditNote.getStatus().equals("closed")){
@@ -168,7 +166,7 @@ public class BalanceService {
 
     public  List<Transaction> getPaymentTransactions(String dateAfter, String dateBefore,  Customer customer) throws DataException {
         List<Transaction> paymentTransactions = new ArrayList<>();
-        List<Payment> payments = invoiceService.getPayments(customer.getContact_name(), dateAfter, dateBefore);
+        List<Payment> payments = pnpZohoInvoiceService.getPayments(customer.getContact_name(), dateAfter, dateBefore);
         //List<Payment.Customerpayment> customerPayments = payments.getCustomerpayments();
         for (Payment customerPayment : payments) {
 

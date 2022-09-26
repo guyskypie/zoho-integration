@@ -31,9 +31,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @ApplicationScoped
-public class InvoiceService {
+public class PnpZohoInvoiceService {
 
-    private static final Logger LOG = Logger.getLogger(InvoiceService.class);
+    private static final Logger LOG = Logger.getLogger(PnpZohoInvoiceService.class);
 
     @Inject
     AuthService authService;

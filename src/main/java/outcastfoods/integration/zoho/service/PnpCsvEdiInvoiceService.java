@@ -35,7 +35,7 @@ public class PnpCsvEdiInvoiceService {
     ZohoApiClient zohoApiClient;
 
     @Inject
-    InvoiceService invoiceService;
+    PnpZohoInvoiceService pnpZohoInvoiceService;
 
     @ConfigProperty(name = "output.invoice.dir")
     String invoiceOutPutDir;
@@ -63,7 +63,7 @@ public class PnpCsvEdiInvoiceService {
             List<InvoiceFetch> invoiceFetches = getInvoices(customerId, dateAfter, dateBefore);
             for (InvoiceFetch invoiceFetch : invoiceFetches) {
 
-                InvoiceDetail invoice = invoiceService.getInvoice(invoiceFetch.getInvoice_id());
+                InvoiceDetail invoice = pnpZohoInvoiceService.getInvoice(invoiceFetch.getInvoice_id());
                 ArrayList<InvoiceLineItem> line_items = invoice.getLine_items();
                 for (InvoiceLineItem line_item : line_items) {
 
