@@ -127,12 +127,100 @@
 			"response": []
 		},
 		{
+			"name": "j_getInvoices_spar_south",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8083/invoice/download?dateFrom=2022-09-01&dateTo=2022-10-05&customerIdsCsv=REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID&parentCustomerName=REDACTED_CUSTOMER Statement",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"invoice",
+						"download"
+					],
+					"query": [
+						{
+							"key": "dateFrom",
+							"value": "2022-09-01"
+						},
+						{
+							"key": "dateTo",
+							"value": "2022-10-05"
+						},
+						{
+							"key": "customerIdsCsv",
+							"value": "REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID"
+						},
+						{
+							"key": "parentCustomerName",
+							"value": "REDACTED_CUSTOMER Statement"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "j_getStatement",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8082/statement?dateFrom=2021-11-01&dateTo=2021-11-30&customerIdsCsv=REDACTED_ID,REDACTED_ID&parentCustomerName=REDACTED_CUSTOMER",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"statement"
+							],
+							"query": [
+								{
+									"key": "dateFrom",
+									"value": "2021-11-01"
+								},
+								{
+									"key": "dateTo",
+									"value": "2021-11-30"
+								},
+								{
+									"key": "customerIdsCsv",
+									"value": "REDACTED_ID,REDACTED_ID"
+								},
+								{
+									"key": "parentCustomerName",
+									"value": "REDACTED_CUSTOMER"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "content-length",
+							"value": "1350"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"contactName\": \"REDACTED_CUSTOMER\",\n    \"balanceDue\": 1527.3400000000004,\n    \"openingbalance\": 4892.62,\n    \"statementLines\": [\n        {\n            \"date\": \"Fri Nov 26 00:00:00 SAST 2021\",\n            \"transactionName\": \"Credit\",\n            \"details\": \"REDACTED_CUSTOMER Credit REDACTED_REF\",\n            \"creditAmount\": \"50.0\",\n            \"balance\": \"1527.3400000000004\"\n        },\n        {\n            \"date\": \"Tue Nov 23 00:00:00 SAST 2021\",\n            \"transactionName\": \"Payment\",\n            \"details\": \"REDACTED_CUSTOMER Payment\",\n            \"creditAmount\": \"1345.96\",\n            \"balance\": \"1577.3400000000004\"\n        },\n        {\n            \"date\": \"Tue Nov 23 00:00:00 SAST 2021\",\n            \"transactionName\": \"Payment\",\n            \"details\": \"REDACTED_CUSTOMER Payment\",\n            \"creditAmount\": \"1682.45\",\n            \"balance\": \"2923.3\"\n        },\n        {\n            \"date\": \"Tue Nov 23 00:00:00 SAST 2021\",\n            \"transactionName\": \"Payment\",\n            \"details\": \"REDACTED_CUSTOMER Payment\",\n            \"creditAmount\": \"1208.71\",\n            \"balance\": \"4605.75\"\n        },\n        {\n            \"date\": \"Fri Nov 19 00:00:00 SAST 2021\",\n            \"transactionName\": \"Invoice\",\n            \"details\": \"REDACTED_CUSTOMER REDACTED_REF\",\n            \"balance\": \"5814.46\",\n            \"debitAmount\": \"310.5\"\n        },\n        {\n            \"date\": \"Tue Nov 16 00:00:00 SAST 2021\",\n            \"transactionName\": \"Invoice\",\n            \"details\": \"REDACTED_CUSTOMER REDACTED_REF\",\n            \"balance\": \"5503.96\",\n            \"debitAmount\": \"310.5\"\n        },\n        {\n            \"date\": \"Mon Nov 15 00:00:00 SAST 2021\",\n            \"transactionName\": \"Payment\",\n            \"details\": \"REDACTED_CUSTOMER Payment\",\n            \"creditAmount\": \"655.5\",\n            \"balance\": \"5193.46\"\n        },\n        {\n            \"date\": \"Mon Nov 15 00:00:00 SAST 2021\",\n            \"transactionName\": \"Invoice\",\n            \"details\": \"REDACTED_CUSTOMER REDACTED_REF\",\n            \"balance\": \"5848.96\",\n            \"debitAmount\": \"956.34\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
 			"name": "j_getStatement_sweetbeet",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8083/statement?dateFrom=2022-06-01&dateTo=2022-07-23&dateForBalanceDue=2022-07-01&customerIdsCsv=REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID&parentCustomerName=REDACTED_CUSTOMER",
+					"raw": "localhost:8083/statement?dateFrom=2022-06-01&dateTo=2022-07-23&dateForBalanceDue=2022-07-01&customerIdsCsv=REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID&parentCustomerName=REDACTED_CUSTOMER&vatNumber&address1&address2&address3&address4",
 					"host": [
 						"localhost"
 					],
@@ -160,6 +248,137 @@
 						{
 							"key": "parentCustomerName",
 							"value": "REDACTED_CUSTOMER"
+						},
+						{
+							"key": "vatNumber",
+							"value": null
+						},
+						{
+							"key": "address1",
+							"value": null
+						},
+						{
+							"key": "address2",
+							"value": null
+						},
+						{
+							"key": "address3",
+							"value": null
+						},
+						{
+							"key": "address4",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "j_getStatement",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8082/statement?dateFrom=2021-11-01&dateTo=2021-11-30&customerIdsCsv=REDACTED_ID,REDACTED_ID&parentCustomerName=REDACTED_CUSTOMER",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"statement"
+							],
+							"query": [
+								{
+									"key": "dateFrom",
+									"value": "2021-11-01"
+								},
+								{
+									"key": "dateTo",
+									"value": "2021-11-30"
+								},
+								{
+									"key": "customerIdsCsv",
+									"value": "REDACTED_ID,REDACTED_ID"
+								},
+								{
+									"key": "parentCustomerName",
+									"value": "REDACTED_CUSTOMER"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "content-length",
+							"value": "1350"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"contactName\": \"REDACTED_CUSTOMER\",\n    \"balanceDue\": 1527.3400000000004,\n    \"openingbalance\": 4892.62,\n    \"statementLines\": [\n        {\n            \"date\": \"Fri Nov 26 00:00:00 SAST 2021\",\n            \"transactionName\": \"Credit\",\n            \"details\": \"REDACTED_CUSTOMER Credit REDACTED_REF\",\n            \"creditAmount\": \"50.0\",\n            \"balance\": \"1527.3400000000004\"\n        },\n        {\n            \"date\": \"Tue Nov 23 00:00:00 SAST 2021\",\n            \"transactionName\": \"Payment\",\n            \"details\": \"REDACTED_CUSTOMER Payment\",\n            \"creditAmount\": \"1345.96\",\n            \"balance\": \"1577.3400000000004\"\n        },\n        {\n            \"date\": \"Tue Nov 23 00:00:00 SAST 2021\",\n            \"transactionName\": \"Payment\",\n            \"details\": \"REDACTED_CUSTOMER Payment\",\n            \"creditAmount\": \"1682.45\",\n            \"balance\": \"2923.3\"\n        },\n        {\n            \"date\": \"Tue Nov 23 00:00:00 SAST 2021\",\n            \"transactionName\": \"Payment\",\n            \"details\": \"REDACTED_CUSTOMER Payment\",\n            \"creditAmount\": \"1208.71\",\n            \"balance\": \"4605.75\"\n        },\n        {\n            \"date\": \"Fri Nov 19 00:00:00 SAST 2021\",\n            \"transactionName\": \"Invoice\",\n            \"details\": \"REDACTED_CUSTOMER REDACTED_REF\",\n            \"balance\": \"5814.46\",\n            \"debitAmount\": \"310.5\"\n        },\n        {\n            \"date\": \"Tue Nov 16 00:00:00 SAST 2021\",\n            \"transactionName\": \"Invoice\",\n            \"details\": \"REDACTED_CUSTOMER REDACTED_REF\",\n            \"balance\": \"5503.96\",\n            \"debitAmount\": \"310.5\"\n        },\n        {\n            \"date\": \"Mon Nov 15 00:00:00 SAST 2021\",\n            \"transactionName\": \"Payment\",\n            \"details\": \"REDACTED_CUSTOMER Payment\",\n            \"creditAmount\": \"655.5\",\n            \"balance\": \"5193.46\"\n        },\n        {\n            \"date\": \"Mon Nov 15 00:00:00 SAST 2021\",\n            \"transactionName\": \"Invoice\",\n            \"details\": \"REDACTED_CUSTOMER REDACTED_REF\",\n            \"balance\": \"5848.96\",\n            \"debitAmount\": \"956.34\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "j_getStatement_spar_south",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8083/statement?dateFrom=2022-09-01&dateTo=2022-09-26&dateForBalanceDue=2022-09-26&customerIdsCsv=REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID&parentCustomerName=REDACTED_CUSTOMER Statement&vatNumber&address1&address2&address3&address4",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"statement"
+					],
+					"query": [
+						{
+							"key": "dateFrom",
+							"value": "2022-09-01"
+						},
+						{
+							"key": "dateTo",
+							"value": "2022-09-26"
+						},
+						{
+							"key": "dateForBalanceDue",
+							"value": "2022-09-26"
+						},
+						{
+							"key": "customerIdsCsv",
+							"value": "REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID"
+						},
+						{
+							"key": "parentCustomerName",
+							"value": "REDACTED_CUSTOMER Statement"
+						},
+						{
+							"key": "vatNumber",
+							"value": null
+						},
+						{
+							"key": "address1",
+							"value": null
+						},
+						{
+							"key": "address2",
+							"value": null
+						},
+						{
+							"key": "address3",
+							"value": null
+						},
+						{
+							"key": "address4",
+							"value": null
 						}
 					]
 				}
@@ -223,7 +442,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8083/statement/picknpay?customerId=REDACTED_ID&dateTo=2022-07-19",
+					"raw": "http://localhost:8083/statement/picknpay?customerId=REDACTED_ID&dateTo=2022-09-20",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -240,7 +459,7 @@
 						},
 						{
 							"key": "dateTo",
-							"value": "2022-07-19"
+							"value": "2022-09-20"
 						}
 					]
 				}
@@ -274,7 +493,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8083/invoice/generatecsvportal/picknpay?customerId=REDACTED_ID&dateFrom=2022-07-12&dateTo=2022-07-20",
+					"raw": "http://localhost:8083/invoice/generatecsvportal/picknpay?customerId=REDACTED_ID&dateFrom=2022-09-04&dateTo=2022-09-16",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -292,11 +511,11 @@
 						},
 						{
 							"key": "dateFrom",
-							"value": "2022-07-12"
+							"value": "2022-09-04"
 						},
 						{
 							"key": "dateTo",
-							"value": "2022-07-20"
+							"value": "2022-09-16"
 						}
 					]
 				}
