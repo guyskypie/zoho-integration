@@ -3,6 +3,7 @@ package outcastfoods.integration.zoho;
 
 import org.acme.rest.client.fruit.FruityViceService;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
+import outcastfoods.integration.zoho.model.internal.CustomerDetails;
 import outcastfoods.integration.zoho.model.internal.Statement;
 import outcastfoods.integration.zoho.service.StatementService;
 import outcastfoods.integration.zoho.service.TabDelimitedPnPStatementService;
@@ -13,7 +14,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
-import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
@@ -43,14 +43,25 @@ public class StatementResource {
     public Object getStatement(@QueryParam("dateFrom") String dateFromIn, @QueryParam("dateTo") String dateToIn,
                                  @QueryParam("customerIdsCsv") String clientIds,
                                  @QueryParam("parentCustomerName") String parentCustomerName,
+                                 @QueryParam("vatNumber") String vatNumber,
+                                 @QueryParam("address1") String address1,
+                                 @QueryParam("address2") String address2,
+                                 @QueryParam("address3") String address3,
+                                 @QueryParam("address4") String address4,
                                  @QueryParam("dateForBalanceDue") String dateForBalanceDue) {
 
         String [] customerIdArr = clientIds.split(",");
         List<String> customerIds = Arrays.asList(customerIdArr);
 
-        LocalDate currentDate = LocalDate.now();
+        CustomerDetails customerDetails = new CustomerDetails();
+        customerDetails.setName(parentCustomerName);
+        customerDetails.setVatNumber(vatNumber);
+        customerDetails.setAddress1(address1);
+        customerDetails.setAddress2(address2);
+        customerDetails.setAddress3(address3);
+        customerDetails.setAddress4(address4);
 
-        Statement statement = statementService.createStatement(parentCustomerName, customerIds, dateFromIn, dateToIn, dateForBalanceDue);
+        Statement statement = statementService.createStatement(customerDetails, customerIds, dateFromIn, dateToIn, dateForBalanceDue);
 
         return statement;
     }

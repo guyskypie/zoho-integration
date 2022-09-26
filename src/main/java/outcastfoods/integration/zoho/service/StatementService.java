@@ -3,10 +3,7 @@ package outcastfoods.integration.zoho.service;
 
 import org.jboss.logging.Logger;
 import outcastfoods.integration.zoho.model.externalapi.Customer;
-import outcastfoods.integration.zoho.model.internal.Statement;
-import outcastfoods.integration.zoho.model.internal.StatementLine;
-import outcastfoods.integration.zoho.model.internal.Transaction;
-import outcastfoods.integration.zoho.model.internal.TransactionName;
+import outcastfoods.integration.zoho.model.internal.*;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -33,13 +30,13 @@ public class StatementService {
 
     /**
      *
-     * @param parentCustomerName
+     * @param parentCustomerDetails
      * @param childCustomerIds
      * @param dateAfterStr  yyyy-mm-dd
      * @param dateBeforeStr  yyyy-mm-dd
      * @return
      */
-    public Statement createStatement(String parentCustomerName, List<String> childCustomerIds,
+    public Statement createStatement(CustomerDetails parentCustomerDetails, List<String> childCustomerIds,
                                      String dateAfterStr, String dateBeforeStr, String dateForBalanceDue){
 
         Statement statement = new Statement();
@@ -112,7 +109,7 @@ public class StatementService {
             // the final line balance worked out backwards is the opening balance
             BigDecimal openingBalance = lineBalance;
 
-            statement.setContactName(parentCustomerName);
+            statement.setCustomerDetails(parentCustomerDetails);
             statement.setOpeningbalance(openingBalance);
             statement.setBalanceDue(balanceDueForPreviousMonth);
             statement.setStatementLines(statementLines);

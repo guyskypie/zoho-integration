@@ -7,6 +7,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.jboss.logging.Logger;
 import outcastfoods.integration.zoho.exception.PDFGeneratorException;
+import outcastfoods.integration.zoho.model.internal.CustomerDetails;
 import outcastfoods.integration.zoho.model.internal.Statement;
 import outcastfoods.integration.zoho.model.internal.StatementLine;
 
@@ -36,11 +37,9 @@ public class PDFGenerator {
 
         try{
 
-            //SimpleDateFormat tabDocDateFormat = new SimpleDateFormat(
-            //        "yyyyMMdd");
             String fileNameDate = statement.getFromDate() + "-" + statement.getToDate();
             String fileName = FILE_NAME_TEMPLATE.replace("[DATE]", fileNameDate)
-                    .replace("[COMPANY_NAME]", statement.getContactName());
+                    .replace("[COMPANY_NAME]", statement.getCustomerDetails().getName());
             String fullPathStatementFileName = statementOutPutDir + fileName;
 
             Document document = new Document();
@@ -97,14 +96,15 @@ public class PDFGenerator {
             document.add(headerStatementSummaryTable);
 
             PdfPTable customerHeaderTable = new PdfPTable(2);
+            CustomerDetails customerDetails = statement.getCustomerDetails();
 
             Phrase companyPhrase = new Phrase();
-            companyPhrase.add(new Chunk("REDACTED_CUSTOMER\n", bold12));
-            companyPhrase.add(new Chunk("Vat Number: 4660300015\n"));
-            companyPhrase.add(new Chunk("20 Section Street\n"));
-            companyPhrase.add(new Chunk("Unit c3, first floor\n"));
-            companyPhrase.add(new Chunk("Block2, Northgate Island\n"));
-            companyPhrase.add(new Chunk("Cape Town\n"));
+            companyPhrase.add(new Chunk(customerDetails.getName() + "\n", bold12));
+            companyPhrase.add(new Chunk(customerDetails.getVatNumber() + "\n"));
+            companyPhrase.add(new Chunk(customerDetails.getAddress1() + "\n"));
+            companyPhrase.add(new Chunk(customerDetails.getAddress2() + "\n"));
+            companyPhrase.add(new Chunk(customerDetails.getAddress3() + "\n"));
+            companyPhrase.add(new Chunk(customerDetails.getAddress4() + "\n"));
             PdfPCell companyDetailsCell = new PdfPCell();
             companyDetailsCell.setHorizontalAlignment(Element.ALIGN_LEFT);
             companyDetailsCell.addElement(companyPhrase);

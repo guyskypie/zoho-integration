@@ -8,17 +8,17 @@ public class Statement {
 
     private String fromDate;
     private String toDate;
-    private String contactName;
     private BigDecimal balanceDue;
     private BigDecimal openingbalance;
     private List<StatementLine> statementLines;
+    private CustomerDetails customerDetails;
 
-    public String getContactName() {
-        return contactName;
+    public CustomerDetails getCustomerDetails() {
+        return customerDetails;
     }
 
-    public void setContactName(String contactName) {
-        this.contactName = contactName;
+    public void setCustomerDetails(CustomerDetails customerDetails) {
+        this.customerDetails = customerDetails;
     }
 
     public BigDecimal getBalanceDue() {
