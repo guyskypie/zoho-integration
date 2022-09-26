@@ -37,6 +37,10 @@ public class PnpCsvEdiInvoiceService {
     @Inject
     PnpZohoInvoiceService pnpZohoInvoiceService;
 
+
+    @Inject
+    InvoiceService invoiceService;
+
     @ConfigProperty(name = "output.invoice.dir")
     String invoiceOutPutDir;
 
@@ -63,7 +67,7 @@ public class PnpCsvEdiInvoiceService {
             List<InvoiceFetch> invoiceFetches = getInvoices(customerId, dateAfter, dateBefore);
             for (InvoiceFetch invoiceFetch : invoiceFetches) {
 
-                InvoiceDetail invoice = pnpZohoInvoiceService.getInvoice(invoiceFetch.getInvoice_id());
+                InvoiceDetail invoice = invoiceService.getInvoice(invoiceFetch.getInvoice_id());
                 ArrayList<InvoiceLineItem> line_items = invoice.getLine_items();
                 for (InvoiceLineItem line_item : line_items) {
 
