@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Objec returned when a single invoice is looked up
@@ -24,7 +25,7 @@ Root root = om.readValue(myJsonString, Root.class); */
     public Object custom_field_hash;
     public Object currency_symbol;
     public Object email;
-    public Object customer_custom_field_hash;
+    public Map customer_custom_field_hash;
     public Object customer_custom_fields;
     public Object offline_created_date_with_time;
     public long invoice_id;
@@ -60,15 +61,15 @@ Root root = om.readValue(myJsonString, Root.class); */
     public int shipping_charge;
     public int adjustment;
     public String adjustment_description;
-    public int sub_total;
+    public BigDecimal sub_total;
     public BigDecimal tax_total;
     public BigDecimal total;
     public ArrayList<Tax> taxes;
     public boolean payment_reminder_enabled;
-    public double payment_made;
-    public double credits_applied;
+    public BigDecimal payment_made;
+    public BigDecimal credits_applied;
     public int tax_amount_withheld;
-    public double balance;
+    public BigDecimal balance;
     public int write_off_amount;
     public boolean allow_partial_payments;
     public int price_precision;
@@ -353,11 +354,11 @@ Root root = om.readValue(myJsonString, Root.class); */
         this.adjustment_description = adjustment_description;
     }
 
-    public int getSub_total() {
+    public BigDecimal getSub_total() {
         return sub_total;
     }
 
-    public void setSub_total(int sub_total) {
+    public void setSub_total(BigDecimal sub_total) {
         this.sub_total = sub_total;
     }
 
@@ -393,19 +394,19 @@ Root root = om.readValue(myJsonString, Root.class); */
         this.payment_reminder_enabled = payment_reminder_enabled;
     }
 
-    public double getPayment_made() {
+    public BigDecimal getPayment_made() {
         return payment_made;
     }
 
-    public void setPayment_made(double payment_made) {
+    public void setPayment_made(BigDecimal payment_made) {
         this.payment_made = payment_made;
     }
 
-    public double getCredits_applied() {
+    public BigDecimal getCredits_applied() {
         return credits_applied;
     }
 
-    public void setCredits_applied(double credits_applied) {
+    public void setCredits_applied(BigDecimal credits_applied) {
         this.credits_applied = credits_applied;
     }
 
@@ -417,11 +418,11 @@ Root root = om.readValue(myJsonString, Root.class); */
         this.tax_amount_withheld = tax_amount_withheld;
     }
 
-    public double getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 
@@ -578,8 +579,13 @@ Root root = om.readValue(myJsonString, Root.class); */
     }
 
 
+    public Map getCustomer_custom_field_hash() {
+        return customer_custom_field_hash;
+    }
 
-
+    public void setCustomer_custom_field_hash(Map customer_custom_field_hash) {
+        this.customer_custom_field_hash = customer_custom_field_hash;
+    }
 }
 
 

@@ -35,13 +35,9 @@ public class PnpCsvEdiInvoiceService {
     ZohoApiClient zohoApiClient;
 
     @Inject
-    PnpZohoInvoiceService pnpZohoInvoiceService;
-
-
-    @Inject
     InvoiceService invoiceService;
 
-    @ConfigProperty(name = "output.invoice.dir")
+    @ConfigProperty(name = "output.invoice.dir.pnp")
     String invoiceOutPutDir;
 
     static final String FILE_NAME_TEMPLATE = "pnp1000011382_[DATE]_outcastfoods_invoices.csv";

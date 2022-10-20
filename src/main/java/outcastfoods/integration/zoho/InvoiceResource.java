@@ -10,6 +10,7 @@ import outcastfoods.integration.zoho.model.internal.Statement;
 import outcastfoods.integration.zoho.service.InvoiceService;
 import outcastfoods.integration.zoho.service.PnpZohoInvoiceService;
 import outcastfoods.integration.zoho.service.PnpCsvEdiInvoiceService;
+import outcastfoods.integration.zoho.service.SparCsvEdiInvoiceService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -27,6 +28,10 @@ public class InvoiceResource {
 
     @Inject
     PnpCsvEdiInvoiceService pnpCsvEdiInvoiceService;
+
+
+    @Inject
+    SparCsvEdiInvoiceService sparCsvEdiInvoiceService;
 
     @Inject
     PnpZohoInvoiceService pnpZohoInvoiceService;
@@ -61,6 +66,23 @@ public class InvoiceResource {
 
         try {
             pnpCsvEdiInvoiceService.createCsvInvoiceFile(customerId,dateFromIn,dateToIn);
+        } catch (Throwable t){
+            LOG.error("Why:", t);
+            t.printStackTrace();
+        }
+
+        return null;
+    }
+
+    @GET
+    @Path("/generateschedule/spar")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Object createSparXCELSchedule(@QueryParam("customerId") String customerId,
+                                                 @QueryParam("dateFrom") String dateFromIn,
+                                                 @QueryParam("dateTo") String dateToIn) throws IOException, InterruptedException {
+
+        try {
+            sparCsvEdiInvoiceService.createXcelInvoiceSchedule(customerId,dateFromIn,dateToIn);
         } catch (Throwable t){
             LOG.error("Why:", t);
             t.printStackTrace();
