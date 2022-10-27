@@ -43,8 +43,10 @@ public class SparCsvEdiInvoiceService {
 
     static final String FILE_NAME_TEMPLATE = "OutcastFoods_203149_[DATE].csv";
 
-    public Object createXcelInvoiceSchedule(String customerId, String dateAfter, String dateBefore) {
+    public String createXcelInvoiceSchedule(String customerIds, String dateAfter, String dateBefore) {
 
+
+        String[] splitCustomerIds = customerIds.split(",");
 
         SimpleDateFormat invoiceFileNameDateFormat = new SimpleDateFormat(
                 "ddMMyyyy");
@@ -62,43 +64,46 @@ public class SparCsvEdiInvoiceService {
         try {
             List<SparCsvLine> csvLines = new ArrayList<>();
 
-            List<InvoiceFetch> invoiceFetches = getInvoices(customerId, dateAfter, dateBefore);
-            for (InvoiceFetch invoiceFetch : invoiceFetches) {
+            for (String customerId : splitCustomerIds) {
+                List<InvoiceFetch> invoiceFetches = getInvoices(customerId, dateAfter, dateBefore);
+                for (InvoiceFetch invoiceFetch : invoiceFetches) {
 
-                InvoiceDetail invoice = invoiceService.getInvoice(invoiceFetch.getInvoice_id());
+                    InvoiceDetail invoice = invoiceService.getInvoice(invoiceFetch.getInvoice_id());
 
-                Map customer_custom_field_hash = invoice.getCustomer_custom_field_hash();
-                String storeCode = (String)customer_custom_field_hash.get("cf_store_code");
+                    Map customer_custom_field_hash = invoice.getCustomer_custom_field_hash();
+                    String storeCode = (String)customer_custom_field_hash.get("cf_store_code");
 
-                Date invoiceDate = zohoDateFormat.parse(invoice.getDate());
-                String sparInvoiceDate = scheduleDateFormat.format(invoiceDate);
+                    Date invoiceDate = zohoDateFormat.parse(invoice.getDate());
+                    String sparInvoiceDate = scheduleDateFormat.format(invoiceDate);
 
-                // only add items in draft, once added to schedule mark as sent manually for now
-                if(invoice.getStatus().equals(InvoiceStateEnum.DRAFT.getZohoState())){
+                    // only add items in draft, once added to schedule mark as sent manually for now
+                    if(invoice.getStatus().equals(InvoiceStateEnum.DRAFT.getZohoState())){
 
-                    SparCsvLine sparCsvLine = new SparCsvLine();
-                    sparCsvLine.setStoreCode(storeCode);
-                    sparCsvLine.setStoreName(invoice.getCustomer_name());
-                    sparCsvLine.setDocNo(invoice.getInvoice_number());
-                    sparCsvLine.setDate(sparInvoiceDate);
+                        SparCsvLine sparCsvLine = new SparCsvLine();
+                        sparCsvLine.setStoreCode(storeCode);
+                        sparCsvLine.setStoreName(invoice.getCustomer_name());
+                        sparCsvLine.setDocNo(invoice.getInvoice_number());
+                        sparCsvLine.setDate(sparInvoiceDate);
 
-                    BigDecimal totalExcl = invoice.getSub_total();
-                    totalExcl = totalExcl.setScale(2, RoundingMode.HALF_UP);
+                        BigDecimal totalExcl = invoice.getSub_total();
+                        totalExcl = totalExcl.setScale(2, RoundingMode.HALF_UP);
 
-                    BigDecimal totalInclusive = invoice.getTotal();
-                    totalInclusive = totalInclusive.setScale(2, RoundingMode.HALF_UP);
+                        BigDecimal totalInclusive = invoice.getTotal();
+                        totalInclusive = totalInclusive.setScale(2, RoundingMode.HALF_UP);
 
-                    BigDecimal vatAmount = invoice.getTax_total();
-                    vatAmount = vatAmount.setScale(2, RoundingMode.HALF_UP);
+                        BigDecimal vatAmount = invoice.getTax_total();
+                        vatAmount = vatAmount.setScale(2, RoundingMode.HALF_UP);
 
-                    sparCsvLine.setExcl(totalExcl.toString());
-                    sparCsvLine.setVat(vatAmount.toString());
-                    sparCsvLine.setIncl(totalInclusive.toString());
-                    csvLines.add(sparCsvLine);
+                        sparCsvLine.setExcl(totalExcl.toString());
+                        sparCsvLine.setVat(vatAmount.toString());
+                        sparCsvLine.setIncl(totalInclusive.toString());
+                        csvLines.add(sparCsvLine);
+
+                    }
 
                 }
-
             }
+
 
             try (PrintWriter writer = new PrintWriter(
                     Files.newBufferedWriter(Paths.get(fullPathStatementFileName)))) {
@@ -128,7 +133,7 @@ public class SparCsvEdiInvoiceService {
         writer.print(sparCsvLine.getVat()+",");
         writer.print(sparCsvLine.getIncl()+",");
         writer.print(",");
-        writer.print(",");
+        writer.print("");
 
         writer.println();
     }

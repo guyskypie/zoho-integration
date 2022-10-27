@@ -1,10 +1,10 @@
 package outcastfoods.integration.zoho;
 
 
-import org.acme.rest.client.fruit.FruityViceService;
-import org.eclipse.microprofile.rest.client.inject.RestClient;
+import org.jboss.logging.Logger;
 import outcastfoods.integration.zoho.model.internal.CustomerDetails;
 import outcastfoods.integration.zoho.model.internal.Statement;
+import outcastfoods.integration.zoho.service.SparStatementEdiService;
 import outcastfoods.integration.zoho.service.StatementService;
 import outcastfoods.integration.zoho.service.TabDelimitedPnPStatementService;
 
@@ -14,20 +14,24 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
 @Path("/statement")
 public class StatementResource {
 
-    @RestClient
-    FruityViceService fruityViceService;
+    private static final Logger LOG = Logger.getLogger(StatementResource.class);
+
 
     @Inject
     StatementService statementService;
 
     @Inject
     TabDelimitedPnPStatementService tabDelimitedPnPStatementService;
+
+    @Inject
+    SparStatementEdiService sparStatementEdiService;
 
 
     /**
@@ -77,6 +81,24 @@ public class StatementResource {
 
         return  tabDelimitedPnPStatementService.createStatement(customerId, dateToIn);
     }
+
+    @GET
+    @Path("/spar")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Object createSparXCELSchedule(@QueryParam("customerIds") String customerIds,
+                                         @QueryParam("dateFrom") String dateFromIn,
+                                         @QueryParam("dateTo") String dateToIn) throws IOException, InterruptedException {
+
+        String fileName = null;
+        try {
+            fileName = sparStatementEdiService.createXcelStatement(customerIds,dateFromIn,dateToIn);
+        } catch (Throwable t){
+            LOG.error("Why:", t);
+            t.printStackTrace();
+        }
+        return fileName;
+    }
+
 
 
 }
