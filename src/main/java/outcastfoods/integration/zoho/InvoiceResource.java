@@ -77,12 +77,12 @@ public class InvoiceResource {
     @GET
     @Path("/generateschedule/spar")
     @Produces(MediaType.APPLICATION_JSON)
-    public Object createSparXCELSchedule(@QueryParam("customerId") String customerId,
+    public Object createSparXCELSchedule(@QueryParam("customerIds") String customerIds,
                                                  @QueryParam("dateFrom") String dateFromIn,
                                                  @QueryParam("dateTo") String dateToIn) throws IOException, InterruptedException {
 
         try {
-            sparCsvEdiInvoiceService.createXcelInvoiceSchedule(customerId,dateFromIn,dateToIn);
+            sparCsvEdiInvoiceService.createXcelInvoiceSchedule(customerIds,dateFromIn,dateToIn);
         } catch (Throwable t){
             LOG.error("Why:", t);
             t.printStackTrace();
