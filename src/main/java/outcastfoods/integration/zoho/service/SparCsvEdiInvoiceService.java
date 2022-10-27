@@ -43,7 +43,7 @@ public class SparCsvEdiInvoiceService {
 
     static final String FILE_NAME_TEMPLATE = "OutcastFoods_203149_[DATE].csv";
 
-    public Object createXcelInvoiceSchedule(String customerId, String dateAfter, String dateBefore) {
+    public Object createXcelInvoiceSchedule(String customerIds, String dateAfter, String dateBefore) {
 
 
         String[] splitCustomerIds = customerIds.split(",");
