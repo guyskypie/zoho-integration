@@ -83,7 +83,7 @@ public class InvoiceResource {
 
         String fileName = null;
         try {
-             fileName = sparCsvEdiInvoiceService.createXcelInvoiceSchedule(customerIds,dateFromIn,dateToIn);
+            sparCsvEdiInvoiceService.createXcelInvoiceSchedule(customerId,dateFromIn,dateToIn);
         } catch (Throwable t){
             LOG.error("Why:", t);
             t.printStackTrace();
