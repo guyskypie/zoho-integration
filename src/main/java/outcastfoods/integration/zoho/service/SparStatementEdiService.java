@@ -8,6 +8,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.logging.Logger;
+import outcastfoods.integration.zoho.mapping.OutcastMockDBConstants;
 import outcastfoods.integration.zoho.model.externalapi.InvoiceDetail;
 import outcastfoods.integration.zoho.model.externalapi.InvoiceFetch;
 import outcastfoods.integration.zoho.model.externalapi.InvoiceStateEnum;
@@ -28,7 +29,6 @@ import java.util.*;
 public class SparStatementEdiService {
 
     private static final Logger LOG = Logger.getLogger(SparStatementEdiService.class);
-
 
     @Inject
     AuthService authService;
@@ -60,7 +60,7 @@ public class SparStatementEdiService {
 
         List<StatementLine> statementLines = getStatementLines(customerIds, dateAfter, dateBefore);
 
-        Workbook xcelWorkbook = createFileAndHeaders();
+        Workbook xcelWorkbook = createFileAndHeaders(dateAfter, dateBefore);
         Sheet sheet = xcelWorkbook.getSheetAt(0);
         int rowPos = 2;
         for (StatementLine statementLine : statementLines) {
@@ -154,59 +154,85 @@ public class SparStatementEdiService {
         return statementLines;
     }
 
-    private Workbook createFileAndHeaders() {
+    private Workbook createFileAndHeaders(String dateAfter, String dateBefore) {
 
         Workbook workbook = new XSSFWorkbook();
 
         Sheet sheet = workbook.createSheet("Statement");
         sheet.setColumnWidth(0, 6000);
-        sheet.setColumnWidth(1, 4000);
+        sheet.setColumnWidth(1, 6000);
+        sheet.setColumnWidth(2, 6000);
+        sheet.setColumnWidth(3, 6000);
 
-        Row header = sheet.createRow(0);
+        Row companyHeader = sheet.createRow(0);
+        Row columnHeader = sheet.createRow(1);
+        Row companyAddressRow = sheet.createRow(2);
 
-        CellStyle headerStyle = workbook.createCellStyle();
-        headerStyle.setFillForegroundColor(IndexedColors.LIGHT_BLUE.getIndex());
-        headerStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 
-        XSSFFont font = ((XSSFWorkbook) workbook).createFont();
-        font.setFontName("Arial");
-        font.setFontHeightInPoints((short) 16);
-        font.setBold(true);
-        headerStyle.setFont(font);
+        CellStyle headerStyleCompanyInfo = workbook.createCellStyle();
+        headerStyleCompanyInfo.setFillForegroundColor(IndexedColors.GREY_25_PERCENT.getIndex());
+        headerStyleCompanyInfo.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        headerStyleCompanyInfo.setWrapText(true);
 
-        Cell headerCell = header.createCell(0);
+        CellStyle headerStyleColumns = workbook.createCellStyle();
+        headerStyleColumns.setFillForegroundColor(IndexedColors.LIGHT_BLUE.getIndex());
+        headerStyleColumns.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+        XSSFFont companyInfoFont = ((XSSFWorkbook) workbook).createFont();
+        companyInfoFont.setFontName("Arial");
+        companyInfoFont.setFontHeightInPoints((short) 18);
+        companyInfoFont.setBold(true);
+        headerStyleCompanyInfo.setFont(companyInfoFont);
+
+        XSSFFont columnFont = ((XSSFWorkbook) workbook).createFont();
+        columnFont.setFontName("Arial");
+        columnFont.setFontHeightInPoints((short) 16);
+        columnFont.setBold(true);
+        headerStyleColumns.setFont(columnFont);
+
+        // company info
+        Cell companyInfoCell = companyHeader.createCell(0);
+        companyInfoCell.setCellValue("Outcast Foods");
+        companyInfoCell.setCellStyle(headerStyleCompanyInfo);
+
+        companyInfoCell = companyHeader.createCell(1);
+        companyInfoCell.setCellValue("Statement of Accounts");
+        companyInfoCell.setCellStyle(headerStyleCompanyInfo);
+
+        companyInfoCell = companyHeader.createCell(2);
+        companyInfoCell.setCellValue(dateAfter + " to " +dateBefore);
+        companyInfoCell.setCellStyle(headerStyleCompanyInfo);
+
+        companyInfoCell = companyHeader.createCell(3);
+        companyInfoCell.setCellValue("REDACTED_CUSTOMER");
+        companyInfoCell.setCellStyle(headerStyleCompanyInfo);
+
+        //add company address
+        Cell cell = companyAddressRow.createCell(0);
+        cell.setCellValue(OutcastMockDBConstants.OUTAST_FOODS_ADDRESS);
+        cell.setCellStyle(workbook.createCellStyle());
+
+        //column headings
+        Cell headerCell = columnHeader.createCell(0);
         headerCell.setCellValue("Date");
-        headerCell.setCellStyle(headerStyle);
+        headerCell.setCellStyle(headerStyleColumns);
 
-        headerCell = header.createCell(1);
+        headerCell = columnHeader.createCell(1);
         headerCell.setCellValue("Invoice No");
-        headerCell.setCellStyle(headerStyle);
+        headerCell.setCellStyle(headerStyleColumns);
 
-        headerCell = header.createCell(2);
+        headerCell = columnHeader.createCell(2);
         headerCell.setCellValue("Store Detail");
-        headerCell.setCellStyle(headerStyle);
+        headerCell.setCellStyle(headerStyleColumns);
 
-        headerCell = header.createCell(3);
+        headerCell = columnHeader.createCell(3);
         headerCell.setCellValue("amount");
-        headerCell.setCellStyle(headerStyle);
+        headerCell.setCellStyle(headerStyleColumns);
 
         return workbook;
     }
 
-    private void writeScheduleHeader(PrintWriter writer) {
-        writer.print("Store code,");
-        writer.print("Store Name,");
-        writer.print("Doc no,");
-        writer.print("Date,");
-        writer.print("Excl,");
-        writer.print("Vat,");
-        writer.print("incl,");
-        writer.print("Referring Invoice No,");
-        writer.print("Referring Claim No");
 
-
-        writer.println();
-    }
 
 
     /**

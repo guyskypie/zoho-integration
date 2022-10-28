@@ -7,6 +7,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.jboss.logging.Logger;
 import outcastfoods.integration.zoho.exception.PDFGeneratorException;
+import outcastfoods.integration.zoho.mapping.OutcastMockDBConstants;
 import outcastfoods.integration.zoho.model.internal.CustomerDetails;
 import outcastfoods.integration.zoho.model.internal.Statement;
 import outcastfoods.integration.zoho.model.internal.StatementLine;
@@ -66,15 +67,7 @@ public class PDFGenerator {
             imageCell.setHorizontalAlignment(Element.ALIGN_CENTER);
             headerOutcastDetails.addCell(imageCell);
 
-            PdfPCell outcastDetailsCell = new PdfPCell(new Phrase("Outcast Foods\n" +
-                    "Unit 4\n" +
-                    "121 Cecil Road\n" +
-                    "Salt River Cape Town 7925\n" +
-                    "South Africa\n" +
-                    "Mobile: 0794821647\n" +
-                    "Email: accounts@outcastfoods.co.za\n" +
-                    "Reg no: 2018/383565/07\n" +
-                    "Vat no: 4480295916"));
+            PdfPCell outcastDetailsCell = new PdfPCell(new Phrase(OutcastMockDBConstants.OUTAST_FOODS_ADDRESS));
             outcastDetailsCell.setHorizontalAlignment(Element.ALIGN_RIGHT);
             headerOutcastDetails.addCell(outcastDetailsCell);
 
