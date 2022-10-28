@@ -30,7 +30,7 @@ public class TabDelimitedPnPStatementService {
     @RestClient
     ZohoApiClient zohoApiClient;
 
-    @ConfigProperty(name = "output.statement.dir")
+    @ConfigProperty(name = "output.statement.dir.pnp")
     String statementOutPutDir;
 
     static final String FILE_NAME_TEMPLATE = "pnp1000011382_[DATE]_outcastfoods_Enterprises_Pick_n_Pay_Retailers.txt";

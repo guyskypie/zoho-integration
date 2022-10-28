@@ -39,7 +39,7 @@ public class SparStatementEdiService {
     @Inject
     InvoiceService invoiceService;
 
-    @ConfigProperty(name = "output.invoice.dir.spar")
+    @ConfigProperty(name = "output.statement.dir.spar")
     String invoiceOutPutDir;
 
     static final String FILE_NAME_TEMPLATE = "OutcastFoods_203149_statement_[DATE].xlsx";
@@ -140,6 +140,7 @@ public class SparStatementEdiService {
                         statementLine.setDate(sparInvoiceDate);
                         statementLine.setTransactionName(invoice.getCustomer_name() + "-" + storeCode);
                         statementLine.setDetails(invoice.getInvoice_number());
+                        statementLine.setDebitAmount(invoice.getTotal().setScale(2, RoundingMode.HALF_UP).toString());
                         statementLines.add(statementLine);
 
                     }
