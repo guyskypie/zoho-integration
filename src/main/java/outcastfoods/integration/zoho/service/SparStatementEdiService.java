@@ -69,6 +69,8 @@ public class SparStatementEdiService {
 
             rowPos ++;
         }
+        String total = statementLines.get(statementLines.size()-1).getBalance();
+        addTotalLine(xcelWorkbook, sheet, rowPos, total);
 
         try (FileOutputStream outputStream = new FileOutputStream(fullPathStatementFileName)) {
 
@@ -104,6 +106,23 @@ public class SparStatementEdiService {
         cell.setCellStyle(style);
     }
 
+
+    private void addTotalLine(Workbook xcelWorkbook, Sheet sheet, int rowPos, String total) {
+        CellStyle style = xcelWorkbook.createCellStyle();
+        style.setWrapText(true);
+
+        Row row = sheet.createRow(rowPos);
+
+
+        Cell cell = row.createCell(2);
+        cell.setCellValue("Total");
+        cell.setCellStyle(style);
+
+        cell = row.createCell(3);
+        cell.setCellValue(total);
+        cell.setCellStyle(style);
+    }
+
     private List<StatementLine>  getStatementLines(String customerIds, String dateAfter, String dateBefore) {
         String[] splitCustomerIds = customerIds.split(",");
 
@@ -115,10 +134,10 @@ public class SparStatementEdiService {
         List<StatementLine> statementLines = new ArrayList<>();
         try {
 
-
+            BigDecimal balance = BigDecimal.ZERO;
             for (String customerId : splitCustomerIds) {
                 List<InvoiceFetch> invoiceFetches = getInvoices(customerId, dateAfter, dateBefore);
-                BigDecimal balance = BigDecimal.ZERO;
+
                 for (InvoiceFetch invoiceFetch : invoiceFetches) {
 
                     InvoiceDetail invoice = invoiceService.getInvoice(invoiceFetch.getInvoice_id());
