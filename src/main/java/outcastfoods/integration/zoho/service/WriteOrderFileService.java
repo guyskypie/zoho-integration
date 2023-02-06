@@ -29,7 +29,7 @@ public class WriteOrderFileService {
     @ConfigProperty(name = "output.pnp.order.dir")
     String orderOutPutDir;
 
-    static final String BRAND_CATZ_REGION_ORDERS_INFO_DATE_CSV = "BrandCatz-[REGION]-Orders-Info-[DATE].csv";
+    static final String BRAND_CATZ_REGION_ORDERS_INFO_DATE_CSV = "[REGION]-Orders-Info-[DATE].csv";
     static final String UNMATCHED_ORDERS_CSV = "Unmatched-Orders-[DATE].csv";
 
 
