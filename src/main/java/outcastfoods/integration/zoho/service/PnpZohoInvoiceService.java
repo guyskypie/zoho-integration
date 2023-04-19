@@ -54,10 +54,6 @@ public class PnpZohoInvoiceService {
     @ConfigProperty(name = "output.pnp.order.dir")
     String orderOutPutDir;
 
-
-    @ConfigProperty(name = "valid.pnp.storecodes")
-    String validStoreCodesCsv;
-
     List<String> validStoreCodes;
 
 
@@ -69,8 +65,11 @@ public class PnpZohoInvoiceService {
 
     @PostConstruct
     public void init(){
-        String[] validStoreCodesArr = validStoreCodesCsv.split(",");
-        validStoreCodes = Arrays.asList(validStoreCodesArr);
+        validStoreCodes = new ArrayList<>();
+        StoreInfoMapping [] storeInfoMappings = StoreInfoMapping.values();
+        for (StoreInfoMapping storeInfoMapping : storeInfoMappings) {
+            validStoreCodes.add(storeInfoMapping.name());
+        }
     }
 
     public List<OrderCsvLine>  createInvoicesAndOrderFiles() throws IOException, InterruptedException, ParseException {
