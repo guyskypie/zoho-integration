@@ -7,27 +7,15 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.logging.Logger;
 import outcastfoods.integration.zoho.exception.DataException;
-import outcastfoods.integration.zoho.mapping.ProductMapping;
-import outcastfoods.integration.zoho.mapping.RegionMapping;
-import outcastfoods.integration.zoho.mapping.StoreInfoMapping;
 import outcastfoods.integration.zoho.model.externalapi.*;
-import outcastfoods.integration.zoho.model.internal.InvoiceInfo;
-import outcastfoods.integration.zoho.model.internal.Order;
-import outcastfoods.integration.zoho.model.internal.OrderCsvLine;
-import outcastfoods.integration.zoho.utils.CsvUtils;
-import outcastfoods.integration.zoho.utils.DateUtils;
 import outcastfoods.integration.zoho.zohoapiclient.CreateInvoiceClient;
 import outcastfoods.integration.zoho.zohoapiclient.ZohoApiClient;
-
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import java.io.File;
 import java.io.IOException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @ApplicationScoped
 public class InvoiceService {
@@ -49,6 +37,18 @@ public class InvoiceService {
 
     static final String INVOICE_FILE_NAME_TEMPLATE = "invoices-[CUSTOMER_NAME]-[DATE]-doc[NUM].pdf";
 
+
+    /**
+     * NOT used for PNP but may be useful
+     * @param zohoCustomerIds
+     * @param customerName
+     * @param dateAfter
+     * @param dateBefore
+     * @return
+     * @throws IOException
+     * @throws DataException
+     */
+    @Deprecated
     public List<String> getInvoicesAndDownload(List<String> zohoCustomerIds, String customerName,
                                                   String dateAfter, String dateBefore) throws IOException, DataException {
         //List<InvoiceFetch> invoices = new ArrayList<>();

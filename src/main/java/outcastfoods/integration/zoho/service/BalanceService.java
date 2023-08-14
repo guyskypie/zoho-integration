@@ -68,36 +68,6 @@ public class BalanceService {
         return invoicedAmount;
     }
 
-    public BigDecimal getBalanceAtDate(Customer customer, String balanceDate) throws DataException, ParseException {
-
-        String now = dateFormat.format(new Date());
-
-        BigDecimal outstandingBalanceAmount = customer.getOutstanding_receivable_amount();
-        BigDecimal outstandingCredits = customer.getUnused_credits_receivable_amount();
-
-        BigDecimal currentBalanceAmount = outstandingBalanceAmount.subtract( outstandingCredits);
-
-        List<Transaction> allTransactions = getAllTransactions(customer, balanceDate, now);
-
-        // order with latest first in the list
-        allTransactions.sort(Comparator.comparing(Transaction::getDate).reversed());
-
-        int countTransactionNumber = 0;
-        //work backwards using opening current balance to get the balance at a particular date [dateAfter]
-        for (Transaction transaction : allTransactions) {
-
-                if(TransactionType.DR.equals(transaction.getTransactionType())){
-                    currentBalanceAmount = currentBalanceAmount.subtract(transaction.getAmount()) ;
-                } /*else if(TransactionType.CR.equals(transaction.getTransactionType())){
-                    // Don't do this the credits already taken care of as we had the total outstanding balance
-                    currentBalanceAmount = currentBalanceAmount.add(transaction.getAmount());
-                }*/
-
-            countTransactionNumber++;
-        }
-
-        return currentBalanceAmount;
-    }
 
 
     public  List<Transaction>  getInvoiceTransactions(String dateAfter, String dateBefore,  Customer customer) throws DataException {

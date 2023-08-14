@@ -1,16 +1,11 @@
 package outcastfoods.integration.zoho;
 
 
-import org.acme.rest.client.fruit.FruityViceService;
-import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.logging.Logger;
 import outcastfoods.integration.zoho.exception.DataException;
-import outcastfoods.integration.zoho.model.internal.CustomerDetails;
-import outcastfoods.integration.zoho.model.internal.Statement;
 import outcastfoods.integration.zoho.service.InvoiceService;
 import outcastfoods.integration.zoho.service.PnpZohoInvoiceService;
 import outcastfoods.integration.zoho.service.PnpCsvEdiInvoiceService;
-import outcastfoods.integration.zoho.service.SparCsvEdiInvoiceService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -29,9 +24,6 @@ public class InvoiceResource {
     @Inject
     PnpCsvEdiInvoiceService pnpCsvEdiInvoiceService;
 
-
-    @Inject
-    SparCsvEdiInvoiceService sparCsvEdiInvoiceService;
 
     @Inject
     PnpZohoInvoiceService pnpZohoInvoiceService;
@@ -74,32 +66,18 @@ public class InvoiceResource {
         return null;
     }
 
-    @GET
-    @Path("/generateschedule/spar")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Object createSparXCELSchedule(@QueryParam("customerIds") String customerIds,
-                                                 @QueryParam("dateFrom") String dateFromIn,
-                                                 @QueryParam("dateTo") String dateToIn) throws IOException, InterruptedException {
 
-        String fileName = null;
-        try {
-            sparCsvEdiInvoiceService.createXcelInvoiceSchedule(customerIds,dateFromIn,dateToIn);
-        } catch (Throwable t){
-            LOG.error("Why:", t);
-            t.printStackTrace();
-        }
-        return fileName;
-    }
 
 
     /**
-     *
+     * NOT USED for PNP but may be useful
      * @param dateFromIn  yyyy-mm-dd
      * @param dateToIn yyyy-mm-dd
      * @param clientIds
      * @param parentCustomerName
      * @return
      */
+    @Deprecated
     @GET
     @Path("/download")
     @Produces(MediaType.APPLICATION_JSON)

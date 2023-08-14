@@ -24,6 +24,12 @@ public class LookupService {
     ZohoApiClient zohoApiClient;
 
 
+    /** Not used now that otehr functions removed but could be useful
+     *
+     * @param customerId
+     * @return
+     */
+    @Deprecated
     public Customer getCustomer(String customerId){
 
         Customer customer = null;

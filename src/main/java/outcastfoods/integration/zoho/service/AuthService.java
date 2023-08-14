@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @ApplicationScoped
 public class AuthService {
 
-    private static final Logger LOG = Logger.getLogger(StatementService.class);
+    private static final Logger LOG = Logger.getLogger(AuthService.class);
 
     private Token token = null;
 
