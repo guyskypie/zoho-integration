@@ -1,0 +1,2997 @@
+{
+	"info": {
+		"_postman_id": "8a1798aa-ff38-4d0f-8ef8-cd82c2ef5eb4",
+		"name": "Zoho Invoice  API",
+		"description": "Zoho Inovice API collections is the PostMan collections for the Zoho Invoice application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18220078"
+	},
+	"item": [
+		{
+			"name": "Contacts",
+			"item": [
+				{
+					"name": "Create Contact",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "JSONString",
+									"value": "{\n  \"contact_name\": \"{Name}\",\n  \"company_name\": \"{Company Name}\",\n  \"payment_terms\": \"{Payment Terms}\",\n  \"currency_id\": \"{Currency ID}\",\n  \"website\": \"{Website}\",\n  \"billing_address\": {\n    \"street\": \"{Street}\",\n    \"city\": \"{City}\",\n    \"state\": \"{State}\",\n    \"zip\": \"{Zip}\",\n    \"country\": \"{Country}\"\n  },\n  \"shipping_address\": {\n    \"street\": \"{Street}\",\n    \"city\": \"{City}\",\n    \"state\": \"{State}\",\n    \"zip\": \"{Zip}\",\n    \"country\": \"{Country}\"\n  },\n  \"contact_persons\": [{\n    \"salutation\": \"{Salute}\",\n    \"first_name\": \"{First Name}\",\n    \"last_name\": \"{Last Name}\",\n    \"email\": \"{Email}\",\n    \"phone\": \"{Phone}\",\n    \"mobile\": \"{Mobile}\",\n    \"is_primary_contact\": true\n  }],\n  \"language_code\": \"en\",\n  \"facebook\": \"{Facebook}\",\n  \"twitter\": \"{Twitter}\"\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/contacts",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"contacts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Contacts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/contacts",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"contacts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Contact",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/contacts/{contacts_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"contacts",
+								"{contacts_id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Contact",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "JSONString",
+									"value": "{\n  \"contact_name\": \"{Name}\",\n  \"company_name\": \"{Company Name}\",\n  \"payment_terms\": \"{Payment Terms}\",\n  \"currency_id\": \"{Currency ID}\",\n  \"website\": \"{Website}\",\n  \"billing_address\": {\n    \"street\": \"{street}\",\n    \"city\": \"{city}\",\n    \"state\": \"{state}\",\n    \"zip\": \"{Zip}\",\n    \"country\": \"{country}\"\n  },\n  \"shipping_address\": {\n    \"street\": \"{street}\",\n    \"city\": \"{city}\",\n    \"state\": \"{state}\",\n    \"zip\": \"{zip}\",\n    \"country\": \"{country}\"\n  },\n  \"contact_persons\": [{\n    \"salutation\": \"{salute}\",\n    \"first_name\": \"{First Name}\",\n    \"last_name\": \"{Last Name}\",\n    \"email\": \"{Email}\",\n    \"phone\": \"{Phone}\",\n    \"mobile\": \"{Mobile}\",\n    \"is_primary_contact\": true\n  }],\n  \"language_code\": \"en\",\n  \"facebook\": \"{Facebook}\",\n  \"twitter\": \"{Twitter}\"\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://https://{{domain_url}}/api/v3/contacts/{contacts_id}",
+							"protocol": "https",
+							"host": [
+								"https"
+							],
+							"port": "",
+							"path": [
+								"",
+								"{{domain_url}}",
+								"api",
+								"v3",
+								"contacts",
+								"{contacts_id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Contact",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/contacts/{contacts_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"contacts",
+								"{contacts_id}"
+							]
+						},
+						"description": "To delete a contact using the userID provided to them"
+					},
+					"response": []
+				}
+			],
+			"description": "Contact API for Create, Read, Updata and Delete is set in this folder\n"
+		},
+		{
+			"name": "Credit Note",
+			"item": [
+				{
+					"name": "Create CreditNote",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "JSONString",
+									"value": "{\n  \"customer_id\": \"{CustomerID}\",\n  \"contact_persons\": [\"{Contact PersonID}\"],\n  \"custom_fields\": [],\n  \"date\": \"{Date:YYYY/MM/DD}\",\n  \"exchange_rate\": {exchange rate},\n  \"is_inclusive_tax\": false,\n  \"line_items\": [{\n    \"item_id\": \"{item ID}\",\n    \"quantity\": \"{quantity}\",\n    \"tax_id\": \"{taxID}\",\n    \"discount\": \"{Discount Percentage}\",\n  }],\n  \"notes\": \"{Note}\",\n  \"terms\": \"{terms}\",\n  \"pricebook_id\": \"{PricebookID}\",\n  \"template_id\": \"{Template ID}\",\n  \"is_discount_before_tax\": true,\n  \"discount_type\": \"{Discount Type}\",\n  \"shipping_charge\": \"{Shipping charges}\",\n  \"adjustment\": \"{adjustment}\",\n  \"adjustment_description\": \"{Adjustment Description}\"\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/creditnotes",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"creditnotes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add CreditNote to invoices",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "JSONString",
+									"value": "{\n  \"invoices\": [{\n    \"invoice_id\": \"{invoiceID}\",\n    \"amount_applied\": \"{Amount}\"\n  }]\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/creditnotes/{creditnote_id}/invoices",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"creditnotes",
+								"{creditnote_id}",
+								"invoices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refund Credit",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "JSONString",
+									"value": "{\n  \"date\": \"{Date:YYYY-MM-DD}\",\n  \"refund_mode\": \"{refund mode type}\",\n  \"reference_number\": \"{reference number}\",\n  \"amount\": {Amount},\n  \"exchange_rate\": \"{Rate}\",\n  \"description\": \"{description}\"\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/creditnotes/{creditnote_id}/refunds",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"creditnotes",
+								"{creditnote_id}",
+								"refunds"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All CreditNote",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/creditnotes",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"creditnotes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get CreditNote",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/creditnotes/{creditnote_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"creditnotes",
+								"{creditnote_id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List of CreditNote Refunds",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/creditnotes/refunds",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"creditnotes",
+								"refunds"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Refund of creditNote",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/creditnotes/{creditnote_id}/refunds",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"creditnotes",
+								"{creditnote_id}",
+								"refunds"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Invoices Credited",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/creditnotes/{creditnote_id}/invoices",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"creditnotes",
+								"{creditnote_id}",
+								"invoices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update CreditNote",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "JSONString",
+									"value": "{\n  \"customer_id\": \"{customerID}\",\n  \"contact_persons\": [\"{contact Person ID}\"],\n  \"creditnote_number\": \"{Credit number}\",\n  \"reference_number\": \"{reference Number}\",\n  \"custom_fields\": [],\n  \"date\": \"{Date:YYYY/MM/DD}\",\n  \"exchange_rate\": {Rate},\n  \"is_inclusive_tax\": false,\n  \"line_items\": [{\n    \"item_id\": \"{Item ID}\",\n    \"quantity\": {quantity},\n    \"tax_id\": \"{tam ID}\",\n    \"discount\": {discount},\n  }],\n  \"notes\": \"{notes}\",\n  \"terms\": \"{terms}\",\n  \"pricebook_id\": \"{pricebook ID}\",\n  \"template_id\": \"{template ID}\",\n  \"is_discount_before_tax\": {true/false},\n  \"discount\": {discount},\n  \"discount_type\": \"{discount Type}\",\n  \"shipping_charge\": {charge},\n  \"adjustment\": {adjustments},\n  \"adjustment_description\": \"{Adjustment Description}\"\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/creditnotes/{creditInote_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"creditnotes",
+								"{creditInote_id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete CreditNote",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/creditnotes/{creditnote_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"creditnotes",
+								"{creditnote_id}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Estimate",
+			"item": [
+				{
+					"name": "Create Estimate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "JSONString",
+									"value": "{\n  \"contact_persons\": [\"{contact person ID}\"],\n  \"reference_number\": \"{reference number}\",\n  \"customer_id\": \"{Customer ID}\",\n  \"date\": \"{Date:YYYY/MM/DD}\",\n  \"expiry_date\": \"{Date:YYYY/MM/DD}\",\n  \"notes\": \"{notes}\",\n  \"terms\": \"{terms}\",\n  \"line_items\": [{\n    \"item_id\": \"{Item ID}\",\n    \"quantity\": \"{Quantity}\",\n    \"discount\": \"{Discount Percentage}\",\n    \"tax_id\": \"{Tax ID}\",\n  }],\n  \"custom_fields\": [],\n  \"is_inclusive_tax\": {true/false},\n  \"is_discount_before_tax\": {true/false},\n  \"discount_type\": \"{discount Type}\",\n  \"shipping_charge\": \"{Charge}\",\n  \"adjustment\": \"{Adjustment}\",\n  \"adjustment_description\": \"{Description}\",\n  \"pricebook_id\": \"{Price Book ID}\",\n  \"template_id\": \"{Template ID}\",\n  \"documents\": [],\n  \"mail_attachments\": []\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/estimates",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"estimates"
+							]
+						},
+						"description": "Creating an estimate "
+					},
+					"response": []
+				},
+				{
+					"name": "Mark as Sent",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/estimates/{estimate_id}/status/sent",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"estimates",
+								"{estimate_id}",
+								"status",
+								"sent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mark as Accepted",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/estimates/{estimate_id}/status/accepted",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"estimates",
+								"{estimate_id}",
+								"status",
+								"accepted"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mark as Declined",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/estimates/{estimate_id}/status/declined",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"estimates",
+								"{estimate_id}",
+								"status",
+								"declined"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Email Estimate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "JSONString",
+									"value": "{\n    \"send_from_org_email_id\": {true/false},\n    \"to_mail_ids\": [\n        \"{mail_id}\"\n    ],\n    \"cc_mail_ids\": [\n        \"{mail_id}\"\n    ],\n    \"subject\": \"{Subject}\",\n    \"body\": \"{Body}\n        Estimate Overview:        Estimate  : {estmaiteNumber}         {Date}        Amount : {amount} Regards {name}\"\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/estimates/{estimate_id}/email",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"estimates",
+								"{estimate_id}",
+								"email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Estimates",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/estimates",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"estimates"
+							]
+						},
+						"description": "Reading the estimate present"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Estimate",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/estimates/{estimate_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"estimates",
+								"{estimate_id}"
+							]
+						},
+						"description": "Reading the estimate present"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Estimate",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "JSONString",
+									"value": "{\n  \"estimate_number\": \"{estimate Number}\",\n  \"contact_persons\": [\"{Contact Person ID}\"],\n  \"reference_number\": \"{Reference Number}\",\n  \"customer_id\": \"{Customer ID}\",\n  \"exchange_rate\": {rate},\n  \"date\": \"{Date:YYYY-MM-DD}\",\n  \"expiry_date\": \"{Date:YYYY-MM-DD}\",\n  \"notes\": \"{Note}\",\n  \"terms\": \"{terms}\",\n  \"line_items\": [{\n    \"item_id\": \"{Item ID}\",\n    \"quantity\": {Quantity},\n    \"discount\": {Discount},\n    \"tax_id\": \"{tax ID}\",\n  }],\n  \"custom_fields\": [],\n  \"is_inclusive_tax\": {true/false},\n  \"is_discount_before_tax\": {true/false},\n  \"discount\": {discount},\n  \"discount_type\": \"{discount type}\",\n  \"shipping_charge\": {charges},\n  \"adjustment\": {adjustment},\n  \"adjustment_description\": \"{Adjustment Description}\",\n  \"salesperson_id\": \"{Salesperson ID}\",\n  \"pricebook_id\": \"{Pricebook ID}\",\n  \"template_id\": \"{Template ID}\",\n  \"payment_options\": {\n    \"payment_gateways\": []\n  },\n  \"documents\": [],\n  \"mail_attachments\": []\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/estimates/{estimate_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"estimates",
+								"{estimate_id}"
+							]
+						},
+						"description": "Updating an existing Estimate"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Estimate",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/estimates/{estimate_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"estimates",
+								"{estimate_id}"
+							]
+						},
+						"description": "Deleting an existing estimate"
+					},
+					"response": []
+				},
+				{
+					"name": "Attach file in Estimate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "attachment",
+									"value": "",
+									"type": "file"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/estimates/{estimate_id}/attachment?can_send_in_mail=true",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"estimates",
+								"{estimate_id}",
+								"attachment"
+							],
+							"query": [
+								{
+									"key": "can_send_in_mail",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Expenses",
+			"item": [
+				{
+					"name": "Create Expense",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "JSONString",
+									"value": "{\n  \"account_id\": \"{account ID}\",\n  \"date\": \"{Date:YYYY-MM-DD}\",\n  \"project_id\": \"{project ID}\",\n  \"distance\": \"{distance}\",\n  \"mileage_type\": \"{Mileage Type}\",\n  \"start_reading\": \"{Start reading}\",\n  \"end_reading\": \"{End Reading}\",\n  \"amount\": \"{Amount}\",\n  \"tax_id\": \"{Tax ID}\",\n  \"is_inclusive_tax\": {true/false},\n  \"reference_number\": \"{reference number}\",\n  \"description\": \"{Description}\",\n  \"vendor_id\": \"{Vendor ID}\",\n  \"customer_id\": \"{Customer ID}\",\n  \"currency_id\": \"{Currency ID}\",\n  \"custom_fields\": [],\n  \"documents\": [],\n  \"line_items\": []\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/expenses",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"expenses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Expenses",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/expenses",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"expenses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get an Expense",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/expenses/{expense _id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"expenses",
+								"{expense _id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Expense",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "JSONString",
+									"value": "{\n  \"account_id\": \"{account ID}\",\n  \"date\": \"{Date:YYYY-MM-DD}\",\n  \"paid_through_account_id\": \"{paid through Account ID}\",\n  \"project_id\": \"{Project ID}\",\n  \"distance\": \"{Distance}\",\n  \"mileage_type\": \"{Mileage Type}\",\n  \"start_reading\": \"{Start Reading}\",\n  \"end_reading\": \"{end Reading}\",\n  \"amount\": \"{Amount}\",\n  \"tax_id\": \"{Tax ID}\",\n  \"is_inclusive_tax\": {true/false},\n  \"is_billable\": {true/false},\n  \"reference_number\": \"{Reference Number}\",\n  \"description\": \"{Description}\",\n  \"customer_id\": \"{Customer ID}\",\n  \"currency_id\": \"{Currency ID}\",\n  \"exchange_rate\": {Exchange Rate},\n  \"recurring_expense_id\": \"{Recurring Expense ID}\",\n  \"custom_fields\": [],\n  \"documents\": [],\n  \"vehicle_id\": \"\",\n  \"mileage_rate\": 0,\n  \"line_items\": []\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/expenses/{expense_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"expenses",
+								"{expense_id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Expense",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							},
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/expenses/{expense_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"expenses",
+								"{expense_id}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Invoice",
+			"item": [
+				{
+					"name": "Get Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "client_id",
+									"value": "REDACTED_ZOHO_CLIENT_ID",
+									"type": "default"
+								},
+								{
+									"key": "client_secret",
+									"value": "REDACTED_ZOHO_CLIENT_SECRET",
+									"type": "default"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "default"
+								},
+								{
+									"key": "scope",
+									"value": "ZohoInvoice.invoices.CREATE",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://accounts.zoho.com/oauth/v2/token",
+							"protocol": "https",
+							"host": [
+								"accounts",
+								"zoho",
+								"com"
+							],
+							"path": [
+								"oauth",
+								"v2",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Invoice Payments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/invoices/{Invoice_id}/payments",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"invoices",
+								"{Invoice_id}",
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Invoices",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/invoices",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"invoices"
+							]
+						},
+						"description": "Selecting a particular invoice fromt the list of invoices"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Invoice",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/invoices/{Invoice_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"invoices",
+								"{Invoice_id}"
+							]
+						},
+						"description": "Selecting a particular invoice fromt the list of invoices"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Invoice",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "JSONString",
+									"value": "{\n  \"invoice_number\": \"{Invoice Number}\",\n  \"reference_number\": \"{Reference Number}\",\n  \"payment_terms\": {payment terms},\n  \"payment_terms_label\": \"{Label}\",\n  \"payment_options\": {\n    \"payment_gateways\": []\n  },\n  \"customer_id\": \"{Customer ID}\",\n  \"contact_persons\": [\"{Contact Person ID}\"],\n  \"date\": \"{Date:YYYY-MM-DD}\",\n  \"due_date\": \"{Date:YYYY-MM-DD}\",\n  \"notes\": \"{Note}\",\n  \"terms\": \"{Terms}\",\n  \"is_inclusive_tax\": {true/false},\n  \"line_items\": [{\n    \"item_id\": \"{Item ID}\",\n    \"quantity\": {quantity},\n    \"discount\": {Discount},\n    \"tax_id\": \"{tax ID}\",\n    \"project_id\": \"{Project ID}\",\n    \"expense_id\": \"{expense ID}\",\n    \"time_entry_ids\": [],\n    \"salesorder_item_id\": \"\",\n  }],\n  \"allow_partial_payments\": {true/false},\n  \"custom_fields\": [],\n  \"exchange_rate\": {rate},\n  \"recurring_invoice_id\": \"{Recurring Invoice ID}\",\n  \"is_discount_before_tax\": {true/false},\n  \"discount\": {Discount},\n  \"discount_type\": \"{Discount Type}\",\n  \"shipping_charge\": {Charges},\n  \"adjustment\": {adjustment},\n  \"adjustment_description\": \"{Description}\",\n  \"salesperson_id\": \"{Salesperson ID}\",\n  \"pricebook_id\": \"{Pricebook ID}\",\n  \"template_id\": \"{Template ID}\",\n  \"documents\": [],\n  \"mail_attachments\": []\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/invoices/{invoice_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"invoices",
+								"{invoice_id}"
+							]
+						},
+						"description": "Update a particular invoice"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Invoice",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "JSONString",
+									"value": "{\n  \"payment_terms\": {payment term},\n  \"payment_terms_label\": \"{Label text}\",\n  \"payment_options\": {\n    \"payment_gateways\": []\n  },\n  \"customer_id\": \"{Customer ID}\",\n  \"contact_persons\": [\"{Contact Person ID}\"],\n  \"date\": \"{Date:YYYY-MM-DD}\",\n  \"due_date\": \"Date:YYYY-MM-DD}\",\n  \"notes\": \"{Note}\",\n  \"terms\": \"{Term}\",\n  \"is_inclusive_tax\": {true/false},\n  \"line_items\": [{\n    \"item_id\": \"{Item ID}\",\n    \"quantity\": \"{quantity}\",\n    \"discount\": \"{Discount}\",\n    \"tax_id\": \"{Tax ID}\",\n  }],\n  \"allow_partial_payments\": {true/false},\n  \"custom_fields\": [],\n  \"is_discount_before_tax\": {true/false},\n  \"discount_type\": \"{discount Type}\",\n  \"shipping_charge\": \"{Charges}\",\n  \"adjustment\": \"{Adjustments}\",\n  \"adjustment_description\": \"{Description}\",\n  \"pricebook_id\": \"{Price Book ID}\",\n  \"template_id\": \"{Template ID}\",\n  \"documents\": [],\n  \"mail_attachments\": []\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/invoices?organization_id={{organization_id}}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"invoices"
+							],
+							"query": [
+								{
+									"key": "organization_id",
+									"value": "{{organization_id}}"
+								}
+							]
+						},
+						"description": "Creating invoice to a particular customer"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Invoice Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "JSONString",
+									"value": "{\"customer_id\":\"REDACTED_ID\",\"reference_number\":\"guy-test1\",\"line_items\":[{\"item_id\":\"1471239000000068016\",\"rate\":\"35\",\"quantity\":\"4\"}],\"date\":\"2022-03-07\"}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/invoices?organization_id={{organization_id}}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"invoices"
+							],
+							"query": [
+								{
+									"key": "organization_id",
+									"value": "{{organization_id}}"
+								}
+							]
+						},
+						"description": "Creating invoice to a particular customer"
+					},
+					"response": []
+				},
+				{
+					"name": "Mark as Sent",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://https://{{domain_url}}/api/v3/invoices/{invoice_id}/status/sent",
+							"protocol": "https",
+							"host": [
+								"https"
+							],
+							"port": "",
+							"path": [
+								"",
+								"{{domain_url}}",
+								"api",
+								"v3",
+								"invoices",
+								"{invoice_id}",
+								"status",
+								"sent"
+							]
+						},
+						"description": "Marking an invoice as sent"
+					},
+					"response": []
+				},
+				{
+					"name": "Email Invoice",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "JSONString",
+									"value": "{\n  \"from_address_id\": \"{addressID}\",\n  \"to_mail_ids\": [\"{mailID}\"],\n  \"subject\": \"{Subject Message}\",\n  \"body\": \"<div style=\\\"background: #fbfbfb;\\\"> <div> <div style=\\\"padding: 2% 3%;max-width: 150px;max-height:50px;\\\"></div></div><div style=\\\"padding:3%;text-align:center;background: #4190f2;\\\"> <div style=\\\"color:#fff;font-size:20px;font-weight:500;\\\">Invoice #INV-000001</div></div><div style=\\\"max-width:560px;margin:auto;padding: 0 3%;\\\"> <div style=\\\"padding: 30px 0; color: #555;line-height: 1.7;\\\">Dear Zoho, <br><br>Thank you for your business. Your invoice can be viewed, printed and downloaded as PDF from the link below. You can also choose to pay it online. <br></div><div style=\\\"padding: 3%; background: #fefff1; border: 1px solid #e8deb5; color: #333;\\\"> <div style=\\\"padding: 0 3% 3%; border-bottom: 1px solid #e8deb5; text-align: center;\\\"> <h4 style=\\\"margin-bottom: 0;\\\">INVOICE AMOUNT</h4> <h2 style=\\\"color: #D61916; margin-top: 10px;\\\">₹102.00</h2> </div><div style=\\\"margin:auto; max-width:350px; padding: 3%;\\\"> <p><span style=\\\"width: 40%; padding-left: 10%; float:left; \\\">Invoice No</span><span style=\\\"width: 40%; padding-left: 10%; display: inline-block;\\\"><b>INV-000001</b></span></p><p><span style=\\\"width: 40%; padding-left: 10%; float:left; \\\">Invoice Date</span><span style=\\\"width: 40%; padding-left: 10%;\\\"><b>18/05/2017</b></span></p><p><span style=\\\"width: 40%; padding-left: 10%; float:left; \\\">Due Date</span><span style=\\\"width: 40%; padding-left: 10%;\\\"><b>24/05/2017</b></span></p></div><div style=\\\"text-align: center;margin: 25px 0;\\\"> <a href=\\\"https://invoice.zoho.com/portal/trialtestrun1/secure?CInvoiceID=2-7ae22f3c19b5b71ff4831a2a987c119fd51cbc04009b9ab6e2cbcac0e7b5ac9647743c60063ced5819061713c9c76e41d50951419f2df83f \\\" style=\\\"text-decoration: none;\\\"> <span style=\\\"background-color:#4dcf59; border: 1px solid #49bd54; cursor: pointer; text-align: center; min-width: 140px; color: #fff; display: inline-block; text-decoration: none; padding: 10px 20px\\\">VIEW INVOICE</span></a> </div></div><br><div style=\\\"padding: 3% 0;line-height: 1.6;\\\"> Regards, <div style=\\\"color: #8c8c8c; font-weight: 400\\\">Rohith K</div><div style=\\\"color: #b1b1b1\\\">TrialTestefgh</div></div></div></div><br><br>\",\n  \"cc_mail_ids\": [\"{mailID}\"],\n  \"bcc_mail_ids\": [\"{mailID}\"],\n  \"send_from_org_email_id\": {true/false}\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/invoices/{invoice_id}/email",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"invoices",
+								"{invoice_id}",
+								"email"
+							]
+						},
+						"description": "After viewing the email, the email is sent to the customer"
+					},
+					"response": []
+				},
+				{
+					"name": "Write Off an Invoice",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/invoices/{invoice_id}/writeoff",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"invoices",
+								"{invoice_id}",
+								"writeoff"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Attach file in invoice",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "attachment",
+									"value": "",
+									"type": "file"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/invoices/{invoice_id}/attachment?can_send_in_mail=true",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"invoices",
+								"{invoice_id}",
+								"attachment"
+							],
+							"query": [
+								{
+									"key": "can_send_in_mail",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Apply Credit to Invoice",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "JSONString",
+									"value": "{\n  \"invoice_payments\": [{\n    \"payment_id\": \"{paymentID}\",\n    \"amount_applied\": \"{amount}\"\n  }],\n  \"apply_creditnotes\": [{\n    \"creditnote_id\": \"{creditNoteID}\",\n    \"amount_applied\": \"{amounty}\"\n  }]\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/invoices/{invoice_id}/credits",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"invoices",
+								"{invoice_id}",
+								"credits"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Invoice",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/invoices/{invoice _id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"invoices",
+								"{invoice _id}"
+							]
+						},
+						"description": "Deleting invoice using a particular invoiceID"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Items",
+			"item": [
+				{
+					"name": "Create Item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "JSONString",
+									"value": "{\n  \"name\": \"{Item Name}\",\n  \"rate\": \"{Rate}\",\n  \"description\": \"{Description}\",\n  \"tax_id\": \"{Tax ID}\",\n  \"sku\": \"{Sku}\",\n  \"product_type\": \"{Product Type}\"\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/items",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"items"
+							]
+						},
+						"description": "Creating an item in the item list"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Items",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/items",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"items"
+							]
+						},
+						"description": "Read a particular item using its itemID provided"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Item",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/items/e{item_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"items",
+								"e{item_id}"
+							]
+						},
+						"description": "Read a particular item using its itemID provided"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Item",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "JSONString",
+									"value": "{\n  \"name\": \"{Item Name}\",\n  \"rate\": \"{Item Rate}\",\n  \"description\": \"{Description}\",\n  \"sku\": \"{Sku}\",\n  \"product_type\": \"{Product Type}\"\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/items/{item_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"items",
+								"{item_id}"
+							]
+						},
+						"description": "Update an existing item present inside the item list"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Item",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/items/{item_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"items",
+								"{item_id}"
+							]
+						},
+						"description": "Delete an item in the list of items present using its itemID"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payments",
+			"item": [
+				{
+					"name": "Create Payment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "JSONString",
+									"value": "{\n  \"customer_id\": \"{Customer ID}\",\n  \"invoices\": [],\n  \"payment_mode\": \"{Payment Mode}\",\n  \"date\": \"{Date:YYYY-MM-DD}\",\n  \"amount\": \"{Amount}\",\n  \"bank_charges\": \"{Charges}\",\n  \"contact_persons\": [\"{Contact Person ID}\"],\n  \"custom_fields\": [],\n  \"documents\": []\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/customerpayments",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"customerpayments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Payment",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/customerpayments",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"customerpayments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Payment",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/customerpayments/{payment_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"customerpayments",
+								"{payment_id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Payment",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "JSONString",
+									"value": "{\n  \"customer_id\": \"{Customer ID}\",\n  \"invoices\": [],\n  \"payment_mode\": \"{Payment Mode}\",\n  \"date\": \"{Date:YYYY-MM-DD}\",\n  \"amount\": \"{Amount}\",\n  \"bank_charges\": \"{Charges}\",\n  \"contact_persons\": [\"{Contact Person ID}\"],\n  \"custom_fields\": [],\n  \"documents\": []\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/customerpayments/{payment_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"customerpayments",
+								"{payment_id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Payment",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/customerpayments/{payment_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"customerpayments",
+								"{payment_id}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "Create Project",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "JSONString",
+									"value": "{\n  \"project_name\": \"{ProjectName}\",\n  \"customer_id\": \"{customerID}\",\n  \"description\": \"{Description}\",\n  \"billing_type\": \"{Billing Type}\",\n  \"rate\": \"{Amount}\",\n  \"budget_type\": \"{Budget Type}\",\n  \"budget_hours\": \"{Budget Hours}\",\n  \"budget_amount\": \"{Amount}\",\n  \"tasks\": [],\n  \"users\": [{\n    \"user_id\": \"{UserID}\",\n    \"rate\": \"{Rate}\"\n  }],\n  \"show_in_dashboard\": {true/false},\n  \"custom_fields\": []\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/projects",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Projects",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/projects",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Project",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/projects/{project_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"projects",
+								"{project_id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update project",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "JSONString",
+									"value": "{\n  \"project_name\": \"{project Name}\",\n  \"customer_id\": \"{customerID}\",\n  \"description\": \"{description}\",\n  \"billing_type\": \"{type of billing}\",\n  \"rate\": \"{amount}\",\n  \"budget_type\": \"{budget type}\",\n  \"budget_hours\": \"{budget hours}\",\n  \"budget_amount\": \"{amount}\",\n  \"tasks\": [],\n  \"users\": [{\n    \"user_id\": \"{userID}\",\n    \"rate\": \"{amount}\",\n    \"budget_hours\": {budget Hours}\n  }],\n  \"show_in_dashboard\": {true/false},\n  \"custom_fields\": []\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/projects/{project_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"projects",
+								"{project_id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Project",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/projects/{project_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"projects",
+								"{project_id}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Retainer Invoice",
+			"item": [
+				{
+					"name": "Create a retainer invoice",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "JSONString",
+									"value": "{\n  \"customer_id\": {customer_id},\n  \"reference_number\": \"{reference_number} \",\n  \"date\": \"{Date:YYYY-MM-DD}\",\n  \"contact_persons\": [\n    \"{contact_person_id}\",\n  ],\n  \"custom_fields\": [{\n    \"index\": {index_Number},\n    \"show_on_pdf\": {true/false},\n    \"value\": \"{Value}\",\n    \"label\": \"{Label}\"\n  }],\n  \"notes\": \"{note}\",\n  \"terms\": \"{terms}\",\n  \"line_items\": [{\n    \"description\": \"{description}\",\n    \"rate\": {rate}\n  }],\n  \"payment_options\": {\n    \"payment_gateways\": [{\n      \"gateway_name\": \"{gateway_Name}\"\n    }]\n  },\n  \"template_id\": {template_id}\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/retainerinvoices",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"retainerinvoices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a retainer invoice",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "JSONString",
+									"value": "{\n  \"customer_id\": {customer_id},\n  \"reference_number\": \"{reference_number} \",\n  \"date\": \"{Date:YYYY-MM-DD}\",\n  \"contact_persons\": [\n    \"{contact_person_id}\",\n  ],\n  \"custom_fields\": [{\n    \"index\": {index_Number},\n    \"show_on_pdf\": {true/false},\n    \"value\": \"{Value}\",\n    \"label\": \"{Label}\"\n  }],\n  \"notes\": \"{note}\",\n  \"terms\": \"{terms}\",\n  \"line_items\": [{\n    \"description\": \"{description}\",\n    \"rate\": {rate}\n  }],\n  \"payment_options\": {\n    \"payment_gateways\": [{\n      \"gateway_name\": \"{gateway_Name}\"\n    }]\n  },\n  \"template_id\": {template_id}\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/retainerinvoices/{retainerinvoice_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"retainerinvoices",
+								"{retainerinvoice_id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Retainer Invoice",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/retainerinvoices",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"retainerinvoices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a retainer invoice",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/retainerinvoices/{retainerinvoice_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"retainerinvoices",
+								"{retainerinvoice_id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a retainer invoice",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "ttps://{{domain_url}}/api/v3/retainerinvoices/{retainerinvoice_id}",
+							"protocol": "ttps",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"retainerinvoices",
+								"{retainerinvoice_id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mark Retainer Invoice as sent",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/retainerinvoices/{retainerinvoice_id}/status/sent",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"retainerinvoices",
+								"{retainerinvoice_id}",
+								"status",
+								"sent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Email Retainter Invoice",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "JSONString",
+									"value": "{\n    \"send_from_org_email_id\": {true/false},\n    \"to_mail_ids\": [\n        \"{email}\"\n    ],\n    \"cc_mail_ids\": [\n        \"{email}\"\n    ],\n    \"subject\": \"{subject}\",\n    \"body\": \"{body and content}\"\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/retainerinvoices/{retainerinvoice_id}/email",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"retainerinvoices",
+								"{retainerinvoice_id}",
+								"email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Retainter Payments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/customerpayments/{retainerinvoice_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"customerpayments",
+								"{retainerinvoice_id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Retainer Payment",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/customerpayments/{retainer_payment_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"customerpayments",
+								"{retainer_payment_id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Attachment to a Retainer Invoice",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "attachment",
+									"value": "",
+									"type": "file"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/retainerinvoices/{retainerinvoice_id}/attachment",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"retainerinvoices",
+								"{retainerinvoice_id}",
+								"attachment"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "Create Task",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "JSONString",
+									"value": "{\n  \"task_name\": \"{Name}\",\n  \"description\": \"{Description}\",\n        \"budget_hours\": \"{Budget Hours}\"\n  \"is_billable\": {true/false}\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/projects/{project_id}/tasks",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"projects",
+								"{project_id}",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Tasks",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/projects/{project_id}/tasks",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"projects",
+								"{project_id}",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Task",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/projects/{project_id}/tasks/{task_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"projects",
+								"{project_id}",
+								"tasks",
+								"{task_id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Task",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/projects/{project_id}/tasks/{task_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"projects",
+								"{project_id}",
+								"tasks",
+								"{task_id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Task",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "JSONString",
+									"value": "{\n  \"task_name\": \"{Name}\",\n  \"description\": \"{Description}\",\n  \"is_billable\": {true/false}\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/projects/{project_id}/tasks/{task_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"projects",
+								"{project_id}",
+								"tasks",
+								"{task_id}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Time Entries",
+			"item": [
+				{
+					"name": "Update Time Entries",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "JSONString",
+									"value": "{\n  \"task_id\": \"{taskID}\",\n  \"user_id\": \"{UserID}\",\n  \"log_time\": \"{time:HH:MM}\",\n  \"log_date\": \"{Date:YYYY-MM-DD}\",\n  \"notes\": \"{note}\",\n  \"start_timer\": {true/false},\n  \"project_id\": \"{project_id}\",\n  \"is_billable\": {true/false}\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/projects/timeentries/{time_entry_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"projects",
+								"timeentries",
+								"{time_entry_id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Log Time Entries",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "JSONString",
+									"value": "{\n  \"task_id\": \"{task_id}\",\n  \"user_id\": \"{user_id}\",\n  \"log_time\": \"{Time:HH:MM}\",\n  \"log_date\": \"{Date:YYYY-MM-DD}\",\n  \"notes\": \"{Notes}\",\n  \"start_timer\": {true/false},\n  \"project_id\": \"{project_id}\",\n  \"is_billable\": {true/false}\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/projects/timeentries",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"projects",
+								"timeentries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Time Entries",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/projects/timeentries",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"projects",
+								"timeentries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Time Entry",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/projects/timeentries/{time_entry_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"projects",
+								"timeentries",
+								"{time_entry_id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Time Entry",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Zoho-oauthtoken {{oauthtoken}}"
+							},
+							{
+								"key": "X-com-zoho-invoice-organizationid",
+								"value": "{{organization_id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://{{domain_url}}/api/v3/projects/timeentries/{time_entry_id}",
+							"protocol": "https",
+							"host": [
+								"{{domain_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"projects",
+								"timeentries",
+								"{time_entry_id}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
