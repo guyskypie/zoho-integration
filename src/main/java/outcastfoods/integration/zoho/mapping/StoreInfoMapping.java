@@ -70,7 +70,8 @@ public enum StoreInfoMapping {
     //WC69("WC69","Cnr of Kommissaris & Sluysken Street"),
     WC72("WC72","BETWEEN R27 & SUNNINGDALE ROAD,TABLEVIEW"),
     //WC73("WC73","CNR. OTTO DUPLESSIS & SIR DAVID DR"),
-    WC84("WC84","117 STRAND STREET");
+    WC84("WC84","117 STRAND STREET"),
+    NF75("NF75", "New Store Pretoria");
     //WC91("WC91","CORNER OF MAIN AND FRANCIS ROAD");
 
 
