@@ -16,7 +16,6 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.client.LaxRedirectStrategy;
 import org.jboss.logging.Logger;
 import outcastfoods.integration.zoho.model.externalapi.InvoiceCreate;
-import outcastfoods.integration.zoho.model.externalapi.InvoiceFetch;
 import outcastfoods.integration.zoho.model.externalapi.InvoiceMultipart;
 import outcastfoods.integration.zoho.model.internal.InvoiceInfo;
 import outcastfoods.integration.zoho.service.AuthService;

@@ -65,6 +65,7 @@ public class InvoiceFetch {
     public BigDecimal adjustment;
     public BigDecimal write_off_amount;
     public BigDecimal exchange_rate;
+    public Date txn_posting_date;
 
     public class BillingAddress{
         public String address;
@@ -532,5 +533,13 @@ public class InvoiceFetch {
 
     public void setExchange_rate(BigDecimal exchange_rate) {
         this.exchange_rate = exchange_rate;
+    }
+
+    public Date getTxn_posting_date() {
+        return txn_posting_date;
+    }
+
+    public void setTxn_posting_date(Date txn_posting_date) {
+        this.txn_posting_date = txn_posting_date;
     }
 }
