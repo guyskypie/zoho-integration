@@ -32,7 +32,7 @@ public class AuthService {
             parameters.put("client_id", "REDACTED_ZOHO_CLIENT_ID");
             parameters.put("client_secret", "REDACTED_ZOHO_CLIENT_SECRET");
             parameters.put("grant_type", "client_credentials");
-            parameters.put("scope", "ZohoInvoice.invoices.READ ZohoInvoice.contacts.READ ZohoInvoice.customerpayments.READ ZohoInvoice.creditnotes.READ ZohoInvoice.invoices.CREATE");
+            parameters.put("scope", "ZohoBooks.invoices.READ ZohoBooks.contacts.READ ZohoBooks.customerpayments.READ ZohoBooks.creditnotes.READ ZohoBooks.invoices.CREATE");
             String form = parameters.keySet().stream()
                     .map(key -> key + "=" + URLEncoder.encode(parameters.get(key), StandardCharsets.UTF_8))
                     .collect(Collectors.joining("&"));
