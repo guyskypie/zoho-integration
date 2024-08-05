@@ -15,7 +15,7 @@ import javax.ws.rs.core.MediaType;
 @RegisterRestClient
 public interface ZohoApiClient {
 
-    //https://invoice.zoho.com/api/v3/invoices?customer_id=REDACTED_ID&date_after=2021-08-01&date_before=2021-08-31
+    //https://books.zoho.com/api/v3/invoices?customer_id=REDACTED_ID&date_after=2021-08-01&date_before=2021-08-31
     @GET
     @Path("/invoices")
     @Produces(MediaType.APPLICATION_JSON)
@@ -24,7 +24,7 @@ public interface ZohoApiClient {
                                      @QueryParam("date_after") String dateAfter,
                                      @QueryParam("date_before") String dateBefore);
 
-    //https://invoice.zoho.com/api/v3/invoices?customer_id=REDACTED_ID&date_after=2021-08-01&date_before=2021-08-31
+    //https://books.zoho.com/api/v3/invoices?customer_id=REDACTED_ID&date_after=2021-08-01&date_before=2021-08-31
     @GET
     @Path("/invoices/{invoiceId}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -48,7 +48,7 @@ public interface ZohoApiClient {
                               @QueryParam("invoice_ids") String invoiceIds);
 
 
-    //https://invoice.zoho.com/api/v3/invoices
+    //https://books.zoho.com/api/v3/invoices
     @POST
     @Path("/invoices")
     @Produces(MediaType.APPLICATION_FORM_URLENCODED)
