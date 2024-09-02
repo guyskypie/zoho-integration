@@ -1,6 +1,7 @@
 package outcastfoods.integration.zoho.service;
 
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
@@ -165,6 +166,8 @@ public class PnpCsvEdiInvoiceService {
 
             for (Map invoicesMap : invoicesMaps) {
                 ObjectMapper mapper = new ObjectMapper(); // jackson's objectmapper
+                mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
                 final InvoiceFetch invoiceFetch = mapper.convertValue(invoicesMap, InvoiceFetch.class);
                 invoiceFetches.add(invoiceFetch);
             }

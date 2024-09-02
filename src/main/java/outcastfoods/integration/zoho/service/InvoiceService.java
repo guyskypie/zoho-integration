@@ -95,6 +95,8 @@ public class InvoiceService {
 
             for (Map invoicesMap : invoicesMaps) {
                 ObjectMapper mapper = new ObjectMapper(); // jackson's objectmapper
+                mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
                 final InvoiceFetch invoiceFetch = mapper.convertValue(invoicesMap, InvoiceFetch.class);
                 invoiceFetches.add(invoiceFetch);
             }
