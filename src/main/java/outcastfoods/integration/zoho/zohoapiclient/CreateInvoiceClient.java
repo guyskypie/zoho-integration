@@ -65,7 +65,8 @@ public class CreateInvoiceClient {
                 .map(key -> key + "=" + URLEncoder.encode(parameters.get(key), StandardCharsets.UTF_8))
                 .collect(Collectors.joining("&"));
 
-        String url = "https://books.zoho.com/api/v3/invoices?organization_id=671750272";
+
+        String url = "https://www.zohoapis.com/books/v3/invoices?organization_id=671750272";
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url))
                 .headers("Content-Type", "application/x-www-form-urlencoded")
@@ -92,7 +93,7 @@ public class CreateInvoiceClient {
 
     public File downloadInvoicePdfs(File dstFile, String invoiceIds) throws MalformedURLException {
 
-        String downloadPdfs = "https://books.zoho.com/api/v3/invoices/pdf?invoice_ids="+invoiceIds;
+        String downloadPdfs = "https://www.zohoapis.com/books/v3/invoices/pdf?invoice_ids="+invoiceIds;
         URL url = new URL(downloadPdfs);
         CloseableHttpClient httpclient = HttpClients.custom()
                 .setRedirectStrategy(new LaxRedirectStrategy()) // adds HTTP REDIRECT support to GET and POST methods

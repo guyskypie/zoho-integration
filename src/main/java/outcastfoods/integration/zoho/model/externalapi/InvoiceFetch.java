@@ -1,5 +1,7 @@
 package outcastfoods.integration.zoho.model.externalapi;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -7,6 +9,7 @@ import java.util.List;
 /**
  * Object returned when a list of invoices is looked up
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class InvoiceFetch {
 
 

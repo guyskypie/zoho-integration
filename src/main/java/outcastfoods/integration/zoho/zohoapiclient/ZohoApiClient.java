@@ -11,7 +11,7 @@ import javax.ws.rs.core.MediaType;
 
 
 @RegisterProvider(RestServiceExceptionMapper.class)
-@Path("/api/v3")
+@Path("/books/v3")
 @RegisterRestClient
 public interface ZohoApiClient {
 

@@ -103,8 +103,8 @@ public class TabDelimitedPnPStatementService {
         List<InvoiceFetch> invoiceFetches = new ArrayList<>();
 
         try {
-
-            HashMap response = (HashMap) zohoApiClient.getInvoicesByStatus(authService.getAccessToken().getBearerToken(),
+            String token = authService.getAccessToken().getBearerToken();
+            HashMap response = (HashMap) zohoApiClient.getInvoicesByStatus(token,
                     customerId,
                     status,
                     dateBefore);
