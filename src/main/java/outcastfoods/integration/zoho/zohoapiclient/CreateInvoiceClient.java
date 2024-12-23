@@ -101,7 +101,7 @@ public class CreateInvoiceClient {
         try {
 
             HttpGet get = new HttpGet(url.toURI()); // we're using GET but it could be via POST as well
-            get.setHeader("Authorization", authService.getAccessToken().getBearerToken());
+                get.setHeader("Authorization", authService.getAccessToken().getBearerToken());
             File downloaded = httpclient.execute(get, new FileDownloadResponseHandler(dstFile));
             return downloaded;
         } catch (Exception e) {

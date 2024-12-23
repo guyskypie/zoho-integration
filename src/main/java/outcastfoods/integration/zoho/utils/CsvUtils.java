@@ -41,19 +41,23 @@ public class CsvUtils {
         final File folder = new File(inputFolder);
         List<String> filePaths = FileUtils.listFilePathsForFolder(folder);
         for (String filePath : filePaths) {
-            List<List<String>> csvLines = CsvUtils.getCsvData(filePath);
+            if(!filePath.contains("DS_Store")) {
 
-            for (List<String> csvLine : csvLines) {
-                OrderCsvLine orderCsvLine = new OrderCsvLine();
-                orderCsvLine.setPoNumber(csvLine.get(1));
-                orderCsvLine.setDeliveryDate(csvLine.get(4));
-                orderCsvLine.setStoreCode(csvLine.get(5));
-                orderCsvLine.setStoreDescription(csvLine.get(6));
-                orderCsvLine.setProductCode(csvLine.get(7));
-                orderCsvLine.setPackSize(Double.valueOf(csvLine.get(10)).intValue());
-                orderCsvLine.setQuantity(Double.valueOf(csvLine.get(11)).intValue());
 
-                orderLines.add(orderCsvLine);
+                List<List<String>> csvLines = CsvUtils.getCsvData(filePath);
+
+                for (List<String> csvLine : csvLines) {
+                    OrderCsvLine orderCsvLine = new OrderCsvLine();
+                    orderCsvLine.setPoNumber(csvLine.get(1));
+                    orderCsvLine.setDeliveryDate(csvLine.get(4));
+                    orderCsvLine.setStoreCode(csvLine.get(5));
+                    orderCsvLine.setStoreDescription(csvLine.get(6));
+                    orderCsvLine.setProductCode(csvLine.get(7));
+                    orderCsvLine.setPackSize(Double.valueOf(csvLine.get(10)).intValue());
+                    orderCsvLine.setQuantity(Double.valueOf(csvLine.get(11)).intValue());
+
+                    orderLines.add(orderCsvLine);
+                }
             }
         }
 
