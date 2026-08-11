@@ -2,9 +2,9 @@
 # Copy this file to application.properties and fill in real values.
 # application.properties is gitignored and must never be committed.
 
-outcastfoods.integration.zoho.zohoapiclient.ZohoApiClient/mp-rest/url=https://www.zohoapis.com
-outcastfoods.integration.zoho.zohoapiclient.ZohoApiClient/mp-rest/scope=javax.inject.Singleton
-outcastfoods.integration.zoho.zohoapiclient.ZohoApiClient/hostnameVerifier=io.quarkus.restclient.NoopHostnameVerifier
+zohoapiclient.my.integration.zoho.ZohoApiClient/mp-rest/url=https://www.zohoapis.com
+zohoapiclient.my.integration.zoho.ZohoApiClient/mp-rest/scope=javax.inject.Singleton
+zohoapiclient.my.integration.zoho.ZohoApiClient/hostnameVerifier=io.quarkus.restclient.NoopHostnameVerifier
 
 input.pnp.csv.upload.folder=/path/to/upload_csv
 output.statement.dir.pnp=/path/to/generatedStatements/pnp/
@@ -32,14 +32,6 @@ quarkus.http.port=8083
 quarkus.http.cors=true
 
 resteasy.role.based.security=true
-org.acme.rest.client.country.CountriesService/mp-rest/url=https://restcountries.eu/rest
-org.acme.rest.client.country.CountriesService/mp-rest/scope=javax.inject.Singleton
-org.acme.rest.client.country.CountriesService/mp-rest/hostnameVerifier=io.quarkus.restclient.NoopHostnameVerifier
-
-org.acme.rest.client.fruit.FruityViceService/mp-rest/url=https://www.fruityvice.com
-org.acme.rest.client.fruit.FruityViceService/mp-rest/scope=javax.inject.Singleton
-org.acme.rest.client.fruit.FruityViceService/mp-rest/hostnameVerifier=io.quarkus.restclient.NoopHostnameVerifier
-
 
 #
 # LOG Levels

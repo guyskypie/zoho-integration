@@ -1,0 +1,515 @@
+{
+  "info": {
+    "_postman_id": "6cc48f0a-1fd2-4e97-9cc9-9cc3925e1b2d",
+    "name": "Zoho Integration Api - Postman",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "18220078"
+  },
+  "item": [
+    {
+      "name": "GetCreditNotes",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Get Invoice",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://invoice.zoho.com/api/v3/invoices?customer_id=REDACTED_ID&date_after=2021-08-01&date_before=2021-08-31",
+          "protocol": "https",
+          "host": [
+            "invoice",
+            "zoho",
+            "com"
+          ],
+          "path": [
+            "api",
+            "v3",
+            "invoices"
+          ],
+          "query": [
+            {
+              "key": "customer_id",
+              "value": "REDACTED_ID"
+            },
+            {
+              "key": "due_date_before",
+              "value": "2021-12-01",
+              "disabled": true
+            },
+            {
+              "key": "due_date_after",
+              "value": "2021-07-01",
+              "disabled": true
+            },
+            {
+              "key": "date_after",
+              "value": "2021-08-01"
+            },
+            {
+              "key": "date_before",
+              "value": "2021-08-31"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Contact",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://invoice.zoho.com/api/v3/contacts/REDACTED_ID",
+          "protocol": "https",
+          "host": [
+            "invoice",
+            "zoho",
+            "com"
+          ],
+          "path": [
+            "api",
+            "v3",
+            "contacts",
+            "REDACTED_ID"
+          ],
+          "query": [
+            {
+              "key": "due_date_before",
+              "value": "2021-12-01",
+              "disabled": true
+            },
+            {
+              "key": "due_date_after",
+              "value": "2021-07-01",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Customer Paymnents",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://invoice.zoho.com/api/v3/customerpayments?customer_name=REDACTED_CUSTOMER&date_after=2021-08-01",
+          "protocol": "https",
+          "host": [
+            "invoice",
+            "zoho",
+            "com"
+          ],
+          "path": [
+            "api",
+            "v3",
+            "customerpayments"
+          ],
+          "query": [
+            {
+              "key": "customer_name",
+              "value": "REDACTED_CUSTOMER"
+            },
+            {
+              "key": "date_after",
+              "value": "2021-08-01",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "j_download_invoices_spar_south",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8083/invoice/download?dateFrom=2022-09-01&dateTo=2022-10-05&customerIdsCsv=REDACTED_ID,REDACTED_ID&parentCustomerName=REDACTED_CUSTOMER",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "invoice",
+            "download"
+          ],
+          "query": [
+            {
+              "key": "dateFrom",
+              "value": "2022-09-01"
+            },
+            {
+              "key": "dateTo",
+              "value": "2022-10-05"
+            },
+            {
+              "key": "customerIdsCsv",
+              "value": "REDACTED_ID,REDACTED_ID"
+            },
+            {
+              "key": "parentCustomerName",
+              "value": "REDACTED_CUSTOMER"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "j_getStatement_spar_south",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8083/statement/spar?customerIds=REDACTED_ID,REDACTED_ID&dateTo=2022-10-31&dateFrom=2022-10-01",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "statement",
+            "spar"
+          ],
+          "query": [
+            {
+              "key": "customerIds",
+              "value": "REDACTED_ID,REDACTED_ID"
+            },
+            {
+              "key": "dateTo",
+              "value": "2022-10-31"
+            },
+            {
+              "key": "dateFrom",
+              "value": "2022-10-01"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "j_create_xcel_schedule_spar",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8083/invoice/generateschedule/spar?customerIds=REDACTED_ID,REDACTED_ID,REDACTED_ID&dateFrom=2022-09-02&dateTo=2022-10-14",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "invoice",
+            "generateschedule",
+            "spar"
+          ],
+          "query": [
+            {
+              "key": "customerIds",
+              "value": "REDACTED_ID,REDACTED_ID,REDACTED_ID"
+            },
+            {
+              "key": "dateFrom",
+              "value": "2022-09-02"
+            },
+            {
+              "key": "dateTo",
+              "value": "2022-10-14"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "j_getStatement_picknpay",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8083/statement/picknpay?customerId=REDACTED_ID&dateTo=2026-04-10",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "statement",
+            "picknpay"
+          ],
+          "query": [
+            {
+              "key": "customerId",
+              "value": "REDACTED_ID"
+            },
+            {
+              "key": "dateTo",
+              "value": "2026-04-10"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "j_order_createinvoice_zoho_picknpay",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8083/invoice/generatezoho/picknpay",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "invoice",
+            "generatezoho",
+            "picknpay"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "j_create_csv_invoice_picknpay",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8083/invoice/generatecsvportal/picknpay?customerId=REDACTED_ID&dateFrom=2026-03-30&dateTo=2026-04-10",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "invoice",
+            "generatecsvportal",
+            "picknpay"
+          ],
+          "query": [
+            {
+              "key": "customerId",
+              "value": "REDACTED_ID"
+            },
+            {
+              "key": "dateFrom",
+              "value": "2026-03-30"
+            },
+            {
+              "key": "dateTo",
+              "value": "2026-04-10"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "z-j_getStatement_sweetbeet",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8083/statement?dateFrom=2022-06-01&dateTo=2022-07-23&dateForBalanceDue=2022-07-01&customerIdsCsv=REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID&parentCustomerName=REDACTED_CUSTOMER&vatNumber&address1&address2&address3&address4",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "statement"
+          ],
+          "query": [
+            {
+              "key": "dateFrom",
+              "value": "2022-06-01"
+            },
+            {
+              "key": "dateTo",
+              "value": "2022-07-23"
+            },
+            {
+              "key": "dateForBalanceDue",
+              "value": "2022-07-01"
+            },
+            {
+              "key": "customerIdsCsv",
+              "value": "REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID,REDACTED_ID"
+            },
+            {
+              "key": "parentCustomerName",
+              "value": "REDACTED_CUSTOMER"
+            },
+            {
+              "key": "vatNumber",
+              "value": null
+            },
+            {
+              "key": "address1",
+              "value": null
+            },
+            {
+              "key": "address2",
+              "value": null
+            },
+            {
+              "key": "address3",
+              "value": null
+            },
+            {
+              "key": "address4",
+              "value": null
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "j_getStatement",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8082/statement?dateFrom=2021-11-01&dateTo=2021-11-30&customerIdsCsv=REDACTED_ID,REDACTED_ID&parentCustomerName=REDACTED_CUSTOMER",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "statement"
+              ],
+              "query": [
+                {
+                  "key": "dateFrom",
+                  "value": "2021-11-01"
+                },
+                {
+                  "key": "dateTo",
+                  "value": "2021-11-30"
+                },
+                {
+                  "key": "customerIdsCsv",
+                  "value": "REDACTED_ID,REDACTED_ID"
+                },
+                {
+                  "key": "parentCustomerName",
+                  "value": "REDACTED_CUSTOMER"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "content-length",
+              "value": "1350"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"contactName\": \"REDACTED_CUSTOMER\",\n    \"balanceDue\": 1527.3400000000004,\n    \"openingbalance\": 4892.62,\n    \"statementLines\": [\n        {\n            \"date\": \"Fri Nov 26 00:00:00 SAST 2021\",\n            \"transactionName\": \"Credit\",\n            \"details\": \"REDACTED_CUSTOMER Credit REDACTED_REF\",\n            \"creditAmount\": \"50.0\",\n            \"balance\": \"1527.3400000000004\"\n        },\n        {\n            \"date\": \"Tue Nov 23 00:00:00 SAST 2021\",\n            \"transactionName\": \"Payment\",\n            \"details\": \"REDACTED_CUSTOMER Payment\",\n            \"creditAmount\": \"1345.96\",\n            \"balance\": \"1577.3400000000004\"\n        },\n        {\n            \"date\": \"Tue Nov 23 00:00:00 SAST 2021\",\n            \"transactionName\": \"Payment\",\n            \"details\": \"REDACTED_CUSTOMER Payment\",\n            \"creditAmount\": \"1682.45\",\n            \"balance\": \"2923.3\"\n        },\n        {\n            \"date\": \"Tue Nov 23 00:00:00 SAST 2021\",\n            \"transactionName\": \"Payment\",\n            \"details\": \"REDACTED_CUSTOMER Payment\",\n            \"creditAmount\": \"1208.71\",\n            \"balance\": \"4605.75\"\n        },\n        {\n            \"date\": \"Fri Nov 19 00:00:00 SAST 2021\",\n            \"transactionName\": \"Invoice\",\n            \"details\": \"REDACTED_CUSTOMER REDACTED_REF\",\n            \"balance\": \"5814.46\",\n            \"debitAmount\": \"310.5\"\n        },\n        {\n            \"date\": \"Tue Nov 16 00:00:00 SAST 2021\",\n            \"transactionName\": \"Invoice\",\n            \"details\": \"REDACTED_CUSTOMER REDACTED_REF\",\n            \"balance\": \"5503.96\",\n            \"debitAmount\": \"310.5\"\n        },\n        {\n            \"date\": \"Mon Nov 15 00:00:00 SAST 2021\",\n            \"transactionName\": \"Payment\",\n            \"details\": \"REDACTED_CUSTOMER Payment\",\n            \"creditAmount\": \"655.5\",\n            \"balance\": \"5193.46\"\n        },\n        {\n            \"date\": \"Mon Nov 15 00:00:00 SAST 2021\",\n            \"transactionName\": \"Invoice\",\n            \"details\": \"REDACTED_CUSTOMER REDACTED_REF\",\n            \"balance\": \"5848.96\",\n            \"debitAmount\": \"956.34\"\n        }\n    ]\n}"
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "tokenType",
+        "value": "Bearer",
+        "type": "string"
+      },
+      {
+        "key": "accessToken",
+        "value": "REDACTED_ZOHO_ACCESS_TOKEN",
+        "type": "string"
+      },
+      {
+        "key": "tokenName",
+        "value": "postman",
+        "type": "string"
+      },
+      {
+        "key": "useBrowser",
+        "value": false,
+        "type": "boolean"
+      },
+      {
+        "key": "clientSecret",
+        "value": "REDACTED_ZOHO_CLIENT_SECRET_2",
+        "type": "string"
+      },
+      {
+        "key": "clientId",
+        "value": "REDACTED_ZOHO_CLIENT_ID_2",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://accounts.zoho.com/oauth/v2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.zoho.com/oauth/v2/auth?access_type=offline&prompt=consent",
+        "type": "string"
+      },
+      {
+        "key": "scope",
+        "value": "ZohoInvoice.invoices.READ ZohoInvoice.contacts.READ   ZohoInvoice.customerpayments.READ ZohoInvoice.creditnotes.READ",
+        "type": "string"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://www.getpostman.com/oauth2/callback",
+        "type": "string"
+      },
+      {
+        "key": "addTokenTo",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}
