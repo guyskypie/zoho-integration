@@ -1,0 +1,52 @@
+# Your configuration properties
+# Copy this file to application.properties and fill in real values.
+# application.properties is gitignored and must never be committed.
+
+outcastfoods.integration.zoho.zohoapiclient.ZohoApiClient/mp-rest/url=https://www.zohoapis.com
+outcastfoods.integration.zoho.zohoapiclient.ZohoApiClient/mp-rest/scope=javax.inject.Singleton
+outcastfoods.integration.zoho.zohoapiclient.ZohoApiClient/hostnameVerifier=io.quarkus.restclient.NoopHostnameVerifier
+
+input.pnp.csv.upload.folder=/path/to/upload_csv
+output.statement.dir.pnp=/path/to/generatedStatements/pnp/
+output.statement.dir.spar=/path/to/generatedStatements/spar/
+output.statement.dir=/path/to/generatedStatements/
+output.invoice.dir=/path/to/generatedInvoices/
+output.invoice.dir.pnp=/path/to/generatedInvoices/pnp/
+output.invoice.dir.spar=/path/to/generatedInvoices/spar/
+output.pnp.order.dir=/path/to/generated_order_files/
+
+
+##scope=ZohoInvoice.invoiceFetches.READ
+quarkus.oidc-client.auth-server-url=https://accounts.zoho.com/oauth/v2/auth
+quarkus.oidc-client.discovery-enabled=false
+quarkus.oidc-client.token-path=https://accounts.zoho.com/oauth/v2/token
+quarkus.oidc-client.client-id=CHANGE_ME
+quarkus.oidc-client.credentials.secret=CHANGE_ME
+quarkus.oidc-client.grant.type=client
+quarkus.oidc-client.scopes=ZohoBooks.invoices.READ
+
+
+running.in.ide=false
+
+quarkus.http.port=8083
+quarkus.http.cors=true
+
+resteasy.role.based.security=true
+org.acme.rest.client.country.CountriesService/mp-rest/url=https://restcountries.eu/rest
+org.acme.rest.client.country.CountriesService/mp-rest/scope=javax.inject.Singleton
+org.acme.rest.client.country.CountriesService/mp-rest/hostnameVerifier=io.quarkus.restclient.NoopHostnameVerifier
+
+org.acme.rest.client.fruit.FruityViceService/mp-rest/url=https://www.fruityvice.com
+org.acme.rest.client.fruit.FruityViceService/mp-rest/scope=javax.inject.Singleton
+org.acme.rest.client.fruit.FruityViceService/mp-rest/hostnameVerifier=io.quarkus.restclient.NoopHostnameVerifier
+
+
+#
+# LOG Levels
+#
+quarkus.log.level=INFO
+quarkus.log.file.level=INFO
+quarkus.log.file.enable=true
+quarkus.log.file.path=logs/zoho-invoiceFetch.log
+quarkus.log.file.rotation.file-suffix=.yyyy-MM-dd
+quarkus.log.file.rotation.max-file-size=100M

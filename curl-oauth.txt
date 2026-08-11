@@ -1,3 +1,0 @@
-
---Winner getting invalid client secret
-Curl -X  POST -H "Content-Type: application/x-www-form-urlencoded" -d "grant_type=client_credentials&client_id=REDACTED_ZOHO_CLIENT_ID&client_secret=REDACTED_ZOHO_CLIENT_SECRET&scope=ZohoInvoice.invoiceFetches.READ" https://accounts.zoho.com/oauth/v2/token

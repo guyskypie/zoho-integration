@@ -1,5 +1,6 @@
 package outcastfoods.integration.zoho.service;
 
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.jboss.logging.Logger;
 import outcastfoods.integration.zoho.auth.Token;
 
@@ -20,17 +21,22 @@ public class AuthService {
 
     private static final Logger LOG = Logger.getLogger(AuthService.class);
 
+    @ConfigProperty(name = "quarkus.oidc-client.client-id")
+    String clientId;
+
+    @ConfigProperty(name = "quarkus.oidc-client.credentials.secret")
+    String clientSecret;
+
     private Token token = null;
 
     public Token getAccessToken() throws IOException, InterruptedException {
 
         if(token == null || !token.isValid()){
-            //String  keys = "REDACTED_ZOHO_CLIENT_SECRET:REDACTED_ZOHO_CLIENT_SECRET";
             String url = "https://accounts.zoho.com/oauth/v2/token";
 
             HashMap<String, String> parameters = new HashMap<>();
-            parameters.put("client_id", "REDACTED_ZOHO_CLIENT_ID");
-            parameters.put("client_secret", "REDACTED_ZOHO_CLIENT_SECRET");
+            parameters.put("client_id", clientId);
+            parameters.put("client_secret", clientSecret);
             parameters.put("grant_type", "client_credentials");
             parameters.put("scope", "ZohoBooks.invoices.READ ZohoBooks.contacts.READ ZohoBooks.customerpayments.READ ZohoBooks.creditnotes.READ ZohoBooks.invoices.CREATE");
             String form = parameters.keySet().stream()
